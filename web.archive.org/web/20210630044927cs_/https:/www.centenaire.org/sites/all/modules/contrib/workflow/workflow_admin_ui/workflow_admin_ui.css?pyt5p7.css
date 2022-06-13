@@ -1,0 +1,41 @@
+/**
+ * @file
+ * Style Sheets for the Workflow_Admin_UI module.
+ */
+ 
+#workflow_admin_ui_overview .state-name input {
+  margin-right: 2em; /* Make room for dragging handle. */
+}
+
+#workflow_admin_ui_overview .state-status {
+  text-align: center;
+}
+
+#workflow_admin_ui_overview .state-count {
+  text-align: right;
+}
+
+#workflow_admin_ui_overview th.state-ops {
+}
+
+/*
+     FILE ARCHIVED ON 03:32:14 Jul 02, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 10:54:11 Jun 08, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 272.573
+  exclusion.robots: 0.095
+  exclusion.robots.policy: 0.088
+  cdx.remote: 0.072
+  esindex: 0.009
+  LoadShardBlock: 238.209 (3)
+  PetaboxLoader3.datanode: 171.629 (4)
+  CDXLines.iter: 15.114 (3)
+  load_resource: 65.193
+  PetaboxLoader3.resolve: 25.406
+*/

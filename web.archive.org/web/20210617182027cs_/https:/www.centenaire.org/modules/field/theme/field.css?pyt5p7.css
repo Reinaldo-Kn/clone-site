@@ -1,0 +1,50 @@
+
+/* Field display */
+.field .field-label {
+  font-weight: bold;
+}
+.field-label-inline .field-label,
+.field-label-inline .field-items {
+  float:left; /*LTR*/
+}
+
+/* Form display */
+form .field-multiple-table {
+  margin: 0;
+}
+form .field-multiple-table th.field-label {
+  padding-left: 0; /*LTR*/
+}
+form .field-multiple-table td.field-multiple-drag {
+  width: 30px;
+  padding-right: 0; /*LTR*/
+}
+form .field-multiple-table td.field-multiple-drag a.tabledrag-handle {
+  padding-right: .5em; /*LTR*/
+}
+
+form .field-add-more-submit {
+  margin: .5em 0 0;
+}
+
+/*
+     FILE ARCHIVED ON 03:08:21 Jun 21, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 07:53:00 Jun 08, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 1002.046
+  exclusion.robots: 0.134
+  exclusion.robots.policy: 0.124
+  cdx.remote: 0.089
+  esindex: 0.01
+  LoadShardBlock: 75.354 (3)
+  PetaboxLoader3.datanode: 81.009 (4)
+  CDXLines.iter: 18.634 (3)
+  load_resource: 117.164
+  PetaboxLoader3.resolve: 76.478
+*/

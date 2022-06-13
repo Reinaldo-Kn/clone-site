@@ -1,0 +1,1273 @@
+/* begin mobile */
+
+/**
+ * This will display them grid elements as block rather than inline for mobile browsers 
+ * (essentially anything smaller than the narrow grid size, and media query declares. 
+ */
+ .grid-1, .grid-2, .grid-3, .grid-4, .grid-5, .grid-6, .grid-7, .grid-8, .grid-9, .grid-10, .grid-11, .grid-12, .grid-13, .grid-14, .grid-15, .grid-16, .grid-17, .grid-18, .grid-19, .grid-20, .grid-21, .grid-22, .grid-23, .grid-24 {
+    position: relative;
+}
+/* Grid panels inside blocks need their margins negated. */
+ .container-12 .block .omega-grid, .container-16 .block .omega-grid, .container-24 .block .omega-grid {
+    position: relative;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+/* end mobile*/
+
+/*
+ * ==========================================================
+ * Grid
+ * ==========================================================
+ */
+ .grid-1, .grid-2, .grid-3, .grid-4, .grid-5, .grid-6, .grid-7, .grid-8, .grid-9, .grid-10, .grid-11, .grid-12, .grid-13, .grid-14, .grid-15, .grid-16, .grid-17, .grid-18, .grid-19, .grid-20, .grid-21, .grid-22, .grid-23, .grid-24 {
+    display: inline;
+    float: left;
+    position: relative;
+}
+.push-1, .pull-1, .push-2, .pull-2, .push-3, .pull-3, .push-4, .pull-4, .push-5, .pull-5, .push-6, .pull-6, .push-7, .pull-7, .push-8, .pull-8, .push-9, .pull-9, .push-10, .pull-10, .push-11, .pull-11, .push-12, .pull-12, .push-13, .pull-13, .push-14, .pull-14, .push-15, .pull-15, .push-16, .pull-16, .push-17, .pull-17, .push-18, .pull-18, .push-19, .pull-19, .push-20, .pull-20, .push-21, .pull-21, .push-22, .pull-22, .push-23, .pull-23, .push-24, .pull-24 {
+    position: relative;
+}
+/* This file will hold styles that are loaded using the same media query as the wide grid. */
+ .container-24 {
+    width: 96%;
+    margin: 0 auto;
+}
+.container-24 .grid-24 {
+    width: 100%;
+}
+/*
+ * ==========================================================
+ * Container
+ * ==========================================================
+ */
+ .container-24 .grid-1, .container-24 .grid-2, .container-24 .grid-3, .container-24 .grid-4, .container-24 .grid-5, .container-24 .grid-6, .container-24 .grid-7, .container-24 .grid-8, .container-24 .grid-9, .container-24 .grid-10, .container-24 .grid-11, .container-24 .grid-12, .container-24 .grid-13, .container-24 .grid-14, .container-24 .grid-15, .container-24 .grid-16, .container-24 .grid-17, .container-24 .grid-18, .container-24 .grid-19, .container-24 .grid-20, .container-24 .grid-21, .container-24 .grid-22, .container-24 .grid-23 {
+    margin: 0;
+    width: 100%;
+    display: block;
+}
+body {
+    overflow: visible;
+}
+.block-menu-top-navigation ul li {
+    width: 320px;
+    float: none;
+    display: block;
+    text-align: center;
+    padding: 0 10px;
+    margin: 5px 0;
+}
+.block-menu-top-navigation ul li a {
+    border-left: none;
+    padding: 0;
+    display: block;
+}
+.header-data.clearfix {
+    float: none;
+}
+#section-content {
+    padding-bottom: 0 !important;
+}
+#region-sidebar-first {
+    width: 100%;
+}
+#region-content {
+    margin-right: 0 !important;
+    width: 100%;
+    margin-bottom: 20px;
+}
+#region-sidebar-second {
+    width: 100% !important;
+    display:none;
+}
+#block-centenaire-core-header-media-link {
+    display: none;
+}
+#region-sidebar-second .node-share {
+    display: none;
+}
+#zone-branding-wrapper {
+    text-align: center;
+    width: 100%;
+}
+.branding-data {
+    float: right;
+    width: 100%;
+    margin: 20px auto 0 auto;
+    text-align: center;
+}
+.site-name-slogan .site-name a {
+    margin: 0 auto;
+    display: block;
+}
+/*
+ * MENU TOP
+ *
+*/
+ #block-menu-menu-top-navigation {
+    display: none;
+}
+#menutop-mobile {
+    position: relative;
+    display: block;
+}
+#menutop-mobile .menutop-picto {
+    background: url(/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/menu-top-picto.png) no-repeat;
+    padding-left: 32px;
+    display: block;
+    cursor: pointer;
+}
+#menutop-mobile ul {
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+#menutop-mobile ul li {
+    list-style: none outside none;
+}
+#menutop-mobile ul li a {
+    color: #000;
+}
+/*
+ * MEGAMENU
+ *
+*/
+ #region-megamenu .region-megamenu-inner {
+    padding: 13px 0 11px;
+}
+#megamenu-mobile {
+    width: 100%;
+    display: block;
+}
+#megamenu-mobile .menu-label {
+    color: #c3c4c4;
+    padding: 7px 15px 7px 0;
+    display: inline-block;
+    cursor: pointer;
+    background: url('/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/menu-mobile-arrow.png') no-repeat right 18px;
+    font-family: Georgia,'Times New Roman',Times,serif;
+    font-size: 1.4em;
+}
+#megamenu-mobile .megamenu-block.item-0 {
+    background: #535657;
+    padding-left: 14px;
+}
+#megamenu-mobile .megamenu-block.item-1 {
+    background: #5d6b70;
+    padding-left: 14px;
+}
+#megamenu-mobile .megamenu-block.item-2 {
+    background: #41565d;
+    padding-left: 14px;
+}
+#megamenu-mobile .megamenu-block.agenda {
+    background: #fff url('/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/menu-mobile-agenda.png') bottom right no-repeat;
+    padding-left: 14px;
+}
+#megamenu-mobile .megamenu-block.agenda a {
+    color: #75828e;
+    padding: 7px 15px 7px 0;
+    display: inline-block;
+    text-align: center;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size:1.4em;
+    background: url('/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/menu-mobile-arrow-agenda.png') no-repeat right 18px;
+}
+#megamenu-mobile .megamenu-block.agenda a:hover { text-decoration: none; }
+#megamenu-mobile .megamenu-block.agenda a span {
+    color: #303639
+}
+
+#megamenu-mobile .megamenu-block .current{
+    background: url('/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/menu-mobile-arrow-open.png') no-repeat right 20px;
+    padding-right: 20px;
+}
+
+#megamenu-mobile ul {
+    display: none;
+    margin: 0;
+    padding: 0 0 10px 0;
+}
+#megamenu-mobile ul li {
+    list-style: none outside none;
+    margin:0 0 5px 0;
+}
+#megamenu-mobile ul li a {
+    display: block;
+    padding: 2px 0;
+    color: #fff;
+    text-decoration: none;
+    font-size:0.9em;
+}
+#megamenu-mobile ul li a br {
+    display:none;
+}
+/*
+ * FOOTER
+ *
+*/
+ #section-footer, #zone-footer-wrapper {
+    width: 100%;
+}
+#block-menu-menu-menu-footer-navigation {
+    width: 100% !important;
+    height: auto;
+    background: none;
+}
+#block-menu-menu-menu-footer-navigation li {
+    float: none;
+    width: 100%;
+    display: block;
+}
+.node-footer-content .field-name-field-footer-content-ministry {
+    margin-bottom: 10px;
+}
+.node-footer-content .field-name-field-footer-content-ministry ul, .field-name-field-footer-content-logo ul {
+    width: 100%;
+}
+.node-footer-content .field-name-field-footer-content-ministry ul li, .node-footer-content .field-name-field-footer-content-logo li {
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 0;
+}
+.node-footer-content .field-name-field-footer-content-ministry ul li br {
+    display: none;
+    visibility: visible;
+    padding: 0 1px;
+    margin: 0 10px;
+}
+.node-footer-content .field-name-field-footer-content-logo li img {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+}
+/*
+ * MEDIA
+ *
+*/
+ #full-media-diapo {
+    margin-bottom: 10px;
+}
+.title-node-rubrique .field-name-field-article-rubrique, .title-node-rubrique .field-name-field-media-rubrique, .title-node-rubrique .field-name-field-book-rubrique, .title-node-rubrique .field-name-field-reference-rubrique, .title-node-rubrique .field-name-field-media-rubrique-spe {
+    float: left;
+    display: block;
+}
+.title-node-rubrique a {
+    display: inline-block;
+}
+.teaser-rub {
+    margin:0 0 5px 0;
+}
+/*
+ * ARTICLE
+ *
+*/
+ #region-sidebar-second .region-sidebar-second-inner {
+    float: none;
+    width: 100%
+}
+/*
+ * HP
+ *
+*/
+ #hp-slide-article {
+    margin: 0 auto 15px auto;
+}
+#hp-slide-article .browse.prev {
+    top: 50px;
+    left: 10px;
+    padding: 0;
+}
+#hp-slide-article .browse.next {
+    top: 50px;
+    right: 10px;
+    padding: 0;
+}
+#hp-slide-article .navi {
+    top: 15px;
+    right: 15px;
+    position: absolute;
+    z-index: 10;
+    display:none;
+}
+#hp-slide-article .item.current .hp-slide-info {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.7);
+    bottom: 0;
+    left: 0;
+    padding: 12px 3%;
+    width: auto;
+}
+#hp-slide-article .slide-title {
+    font-size: 1.2em;
+    line-height: 1.3em;
+    margin-bottom:0;
+}
+#hp-slide-article .slide-source {
+    border:none;
+    margin-top:0;
+    padding-top:4px;
+    display:none;
+}
+#hp-slide-article .slide-rub, #hp-slide-article .slide-text, #hp-slide-article.isea-carousel .items .item .mask-slide {
+    display: none !important;
+}
+.hp-wrapper-edito {
+    width: 100%;
+    float: none;
+    margin-bottom: 30px;
+}
+.block-hp-facebook {
+    width: 100%;
+    float:none;
+    margin-bottom: 30px;
+}
+.hp-archive-une {
+    width: 100%;
+}
+.hp-video-une {
+    width: 100%;
+    margin-right: 0;
+    float: none;
+}
+.hp-video-une .hp-video-content {
+    padding: 10px 0 0;
+    border-top:1px solid #474C50;
+}
+.hp-video-une .hp-video-content iframe {
+    margin-bottom: 10px
+}
+.last-article {
+    float: none;
+    margin-top: 20px;
+}
+h1 {
+    font-size:1.7em;
+}
+.field-name-body h2, .cke_show_borders h2 {
+    line-height:1.3;
+    font-size:1.4em;
+}
+.node-type-article .field-name-body {
+    font-size:1em;
+}
+html.js body.html div#page.page section#section-content.section div#zone-content-wrapper.zone-wrapper div#zone-content.zone div#region-pre-content.grid-24 div.region-inner div#block-easy-breadcrumb-easy-breadcrumb.block div.block-inner div.content div.easy-breadcrumb span.easy-breadcrumb_segment-wrapper span.easy-breadcrumb_segment-title {
+    display:none;
+}
+.node-share ul li.item-0 {
+    margin:0px 0 5px 0;
+}
+.node-share ul li.item-1, .node-share ul li.item-2 {
+    clear:both;
+    display:block;
+    margin:0 0 15px 0;
+}
+.node-share ul li.item-3 {
+    clear:both;
+}
+/*.node-share ul li.item-3, .node-share ul li.item-4, .node-share ul li.item-5, .node-share ul li.item-6, .node-share ul li.item-7, .node-share ul li.item-8 {
+    margin-right:6px;
+}*/
+.node-share.full {
+    padding: 13px 0 18px 18px;
+}
+.hp-archive-une .archive-text {
+    display:none;
+}
+.hp-archive-une .archive-content-text {
+    width:100%;
+}
+.hp-archive-une .archive-content-img {
+    float:none;
+    margin:0 0 10px 0;
+}
+.hp-archive-une .archive-title {
+    margin-bottom:5px;
+    display:block;
+    width:100%;
+}
+.hp-archive-une .archive-source {
+    margin-top:0px;
+}
+.hp-line1 {
+    margin-bottom:15px;
+}
+.col-soon {
+    float:none;
+    display:block;
+    width:auto;
+}
+.col-soon.bg1, .col-soon.bg3, .col-soon.bg2 {
+    height:auto;
+}
+.col-soon h3 br {
+    display:none;
+}
+.node-footer-content .field-name-field-footer-content-logo li {
+    text-align:center;
+    display:inline-block;
+    width:auto;
+    margin:0px 5px 0 0;
+}
+#block-menu-menu-top-navigation {
+    display: none;
+}
+#menutop-mobile {
+    position: relative;
+    display: block;
+    padding:10px;
+    border-right:1px solid #4b5255;
+}
+#menutop-mobile .menutop-picto {
+    background: url(/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/menu-top-picto.png) 0 3px no-repeat;
+    padding-left: 20px;
+    display: block;
+    cursor: pointer;
+    color:#fff;
+    text-transform:uppercase;
+    font-size:0.75em;
+}
+#menutop-mobile.open .menutop-picto {
+    color:#000;
+    background: url(/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/menu-top-picto-open.png) 0 3px no-repeat;
+}
+#menutop-mobile.open {
+    background: #fff;
+}
+#menutop-mobile ul.menu {
+    margin: 0;
+    padding: 0;
+    display: none;
+    background:#fff;
+    width:1000%;
+    position:absolute;
+    z-index:9999;
+    left:-2.64%;
+    top:37px;
+}
+#menutop-mobile ul li {
+    list-style: none outside none;
+    border-bottom:1px solid #999;
+    margin:0 !important;
+}
+#menutop-mobile ul li a {
+    color: #000;
+    font-size:0.80em;
+    display:block;
+    width:100%;
+    padding:10px 0 10px 15px;
+}
+#zone-pre-header-wrapper, #zone-pre-header {
+    padding: 0px;
+    width:100% !important;
+}
+#header-switch-langages span {
+    display:none;
+}
+#header-switch-langages ul {
+    float:right;
+    background:none;
+    padding:0;
+    margin:0;
+}
+#header-switch-langages ul li {
+    float:left;
+    margin:0;
+    color:#fff;
+}
+#header-switch-langages ul li:nth-child(2) {
+    border:none;
+}
+#header-switch-langages ul li a {
+    color:#fff;
+    border-left:1px solid #4b5255;
+    border-right:1px solid #4b5255;
+    padding:10px 5px;
+    display:block;
+}
+#header-switch-langages ul li.active {
+    background:#323639;
+}
+#hp-slide-article .browse.next {
+    top: 50%;
+    right: 5%;
+    padding: 0;
+    margin-top:-49px;
+}
+#hp-slide-article .browse.prev {
+    top: 50%;
+    left: 5%;
+    padding: 0;
+    margin-top:-49px;
+}
+.nano .content {
+    bottom: 0;
+    left: 0;
+    /*overflow-x:;*/
+    overflow-y: scroll;
+    position: relative;
+    right: 0;
+    top: 0;
+}
+.col-soon h3 {
+    margin: 0 0 10px;
+    padding: 8px 0 8px 13px;
+}
+.block-col2-node-informations {
+    padding:3%;
+}
+.image-credit {
+    padding:0 0 10px 0;
+}
+.node-type-media .media-infos-src .media-infos {
+    margin-bottom: 20px;
+}
+.node-type-media .media-infos-src {
+    margin-bottom: 20px;
+}
+.block-col2-node-informations .field-name-field-tags .field-item {
+    float:left;
+    margin:0 5px 5px 0;
+}
+.block-col2-node-informations {
+    margin:0 0 20px 0;
+}
+#hp-slide-article.isea-carousel .items .item.current {
+    visibility:visible;
+}
+#hp-slide-article.isea-carousel .items .item {
+    visibility:hidden;
+}
+#hp-slide-article .browse.prev span {
+    background: url('/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/sprite-centenaire.png') -220px -300px;
+    display: block;
+}
+#hp-slide-article .browse.prev span:hover {
+    background: url('/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/sprite-centenaire.png') -220px -300px;
+    display: block;
+}
+#hp-slide-article .browse.next span {
+    background: url('/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/sprite-centenaire.png') -220px -400px;
+    display: block;
+}
+#hp-slide-article .browse.next span:hover {
+    background: url('/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/sprite-centenaire.png') -220px -400px;
+    display: block;
+}
+#hp-slide-article .browse span {
+    height: 80px;
+    width: 40px;
+}
+.teaser-body {
+    display:none;
+}
+.hp-wrapper-edito {
+    display:none;
+}
+#full-media-diapo .article-illustration {
+    max-width: 720px;
+    height: auto;
+    max-height: 500px;
+}
+.bar-slide-action {
+    display: none;
+}
+.page-taxonomy-term .node-teaser .node-teaser-content h2 a {
+    font-size:0.7em !important;
+    width:100%;
+}
+.node-teaser-content {
+    width:100%;
+    margin-top:12px;
+}
+#region-header {
+    height:104px;
+}
+.site-name-slogan .site-name {
+    margin-top:-12px;
+}
+.resizable-textarea .grippie {
+    display:none;
+}
+.node-webform.node-full .form-textarea-wrapper textarea {
+    width:100%;
+}
+.node-webform.node-full .form-textarea-wrapper {
+    width:88%;
+}
+.node-webform.node-full input.form-text, .node-webform.node-full textarea {
+    width:83%;
+}
+.node-webform.node-full .sbHolder {
+    display:block;
+    width:160px;
+}
+.node-webform.node-full {
+    padding:10px;
+}
+img {
+    width:100%;
+}
+#full-media-diapo .browse.prev {
+    background:url("/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/sprite-centenaire.png") repeat scroll -220px -300px transparent;
+    left:20px;
+}
+#full-media-diapo .browse.prev:hover {
+    background:url("/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/sprite-centenaire.png") repeat scroll -220px -300px transparent;
+    left:20px;
+}
+#full-media-diapo .browse.next {
+    background:url("/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/sprite-centenaire.png") repeat scroll -220px -400px transparent;
+    right:30px;
+}
+#full-media-diapo .browse.next:hover {
+    background:url("/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/sprite-centenaire.png") repeat scroll -220px -400px transparent;
+    right:30px;
+}
+#full-media-diapo .browse {
+    height:80px;
+    width:39px;
+}
+div.content div.node-teaser-illus {
+    width:100%;
+	max-width:263px !important;
+}
+
+.node-media.node-full .field-name-field-media-image {
+    height:auto;
+    width:auto;
+}
+.hp-tweet {
+    display:none;
+}
+#soon {
+    width:100%;
+    display:none;
+}
+#block-centenaire-megamenu-megamenu-mobile, #menutop-mobile {
+    display:block;
+}
+#views-exposed-form-recherche-page {
+    display:none;
+}
+.hp-line4 .sidebar-links {
+    width:100%;
+}
+.hp-line4 .sidebar-links .sidebar-links-item .sidebar-links-title a {
+    padding-left:3.12%;
+    padding-right:3.12%;
+}
+.field-name-field-book-image + h1 {
+    font-size:1.5em;
+    margin-top:-2.48em;
+}
+/****Page event****/
+ .page-node-add-event .container-24 .grid-17 .vertical-tabs ul {
+    padding: 0 5%;
+    width: 90%;
+    margin-bottom:5%;
+}
+.page-node-add-event .container-24 .grid-17 .vertical-tabs .fieldset-wrapper {
+    margin-left:0;
+}
+.page-node-add-event .container-24 .grid-17 #edit-field-event-cgu, .page-node-add-event .container-24 .grid-17 #edit-actions {
+    margin-left:0;
+}
+.page-node-add-event .container-24 .grid-17 .vertical-tabs select {
+    width:100%;
+}
+#edit-field-event-date-first-und-0-value, #edit-field-event-date-last-und-0-value, #edit-field-event-autre-lieu-und-0-field-event-date-first-und-0-value, #edit-field-event-autre-lieu-und-0-field-event-date-last-und-0-value, #edit-field-event-autre-lieu-und-1-field-event-date-first-und-0-value, #edit-field-event-autre-lieu-und-1-field-event-date-last-und-0-value, #edit-field-event-autre-lieu-und-2-field-event-date-first-und-0-value, #edit-field-event-autre-lieu-und-2-field-event-date-last-und-0-value, #edit-field-event-autre-lieu-und-3-field-event-date-first-und-0-value, #edit-field-event-autre-lieu-und-3-field-event-date-last-und-0-value, #edit-field-event-autre-lieu-und-4-field-event-date-first-und-0-value, #edit-field-event-autre-lieu-und-4-field-event-date-last-und-0-value, #edit-field-event-autre-lieu-und-5-field-event-date-first-und-0-value, #edit-field-event-autre-lieu-und-5-field-event-date-last-und-0-value {
+    width:50%;
+}
+.hp-line4 .sidebar-links .sidebar-links-content .sidebar-links-item .sidebar-links-title {
+    line-height:1.2em;
+}
+#hp-book-media {
+    width:100%;
+}
+#hp-book-media .item {
+    margin-top:15px;
+}
+#hp-book-media .item-header {
+    padding:15px 5.17%;
+}
+#hp-lemonderss{
+	height:400px;
+}
+#hp-lemonderss .rss-header{
+	background:url(/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/BG_title_Le_Monde.png) repeat;
+}
+#hp-lemonderss .rss-image{
+	display:none;
+}
+#hp-lemonderss .rss-image + .rss-info{
+	width:100%;
+}
+#hp-lemonderss .rss-header-title {
+    width:55%;
+}
+#hp-lemonderss .pane{
+	height:277px;
+}
+
+#hp-book-media .item-header-image {
+    float:none;
+}
+#hp-book-media .item-0 .item-header-image{
+	max-width:111px;
+}
+
+#hp-book-media .item-1 .item-header-image{
+	max-width:187px;
+}
+#hp-book-media .item-header-slogan {
+    width: auto;
+}
+#hp-book-media .item-body {
+    display:none;
+}
+.hp-line4 .item-1 {
+    display:none;
+}
+.hp-line2 {
+    margin-bottom: 15px;
+}
+.hp-dlc {
+    margin-bottom: 15px;
+}
+.hp-line4 {
+    margin-bottom:0;
+    margin-top:12px;
+    height:auto;
+}
+.hp-line4-top {
+    margin-bottom: 0;
+}
+.sidebar-links .sidebar-links-item {
+    margin-bottom:15px;
+}
+.hp-agenda-min {
+    display:block;
+}
+
+.hp-vlc .hp-svg-map-title, .hp-vlc .hp-video-une-title{
+    padding:0px 3.12% 8px;
+    font-size:1.1em;
+    margin-bottom:0px;
+}
+
+.hp-vlc .hp-vlc-node-entete{
+    max-width: 100% !important;
+}
+
+.hp-vlc .hp-video-une-title {
+    border-bottom:1px solid #2C2F31;
+}
+.hp-vlc .hp-video-une {
+    float:none;
+    margin-right:0;
+    width:100%;
+}
+.hp-vlc .hp-video-une .hp-video-content .video-source{
+    margin-bottom: 15px;
+}
+.hp-vlc .hp-vlc-nodes {
+    float:none;
+    width:100%;
+    margin-top: 15px;
+}
+.hp-vlc .hp-vlc-node {
+    margin-bottom:0;
+    margin-top:20px;
+}
+
+.hp-vlc .hp-vlc-nodespe, .sidebar-links .sidebar-links-itemspe {
+    padding: 5% 3.57% 0;
+}
+
+.hp-vlc .hp-vlc-nodespe.monument,
+.sidebar-links .sidebar-links-itemspe.monument {
+    height: 176px;
+    margin-bottom: 15px;
+}
+
+.hp-vlc .hp-vlc-nodespe.timeline,
+.sidebar-links .sidebar-links-itemspe.timeline {
+    background: url('/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/frise-675px.png') center 0 no-repeat;
+    background-size: auto !important;
+    height: 304px;
+    margin-bottom: 0;
+}
+
+#hp-line5 {
+    padding-top:0 !important;
+    margin-bottom:10px;
+}
+.hp-dlc-content-left ul, .hp-dlc-content-rub, .hp-dlc-content-text, .hp-dlc-content-morelinks {
+    display:none;
+}
+.hp-dlc-content-left, .hp-dlc-content-right {
+    float:none !important;
+    width:100% !important;
+}
+
+.hp-dlc .hp-dlc-content-title {
+    margin-top: 10px;
+    font-size:1.4em;
+    padding:0 3.12%;
+}
+.hp-dlc .hp-dlc-content-top {
+    padding:12px 0 10px;
+}
+.hp-vlc .hp-vlc-content-top {
+    border:none;
+}
+.hp-vlc .hp-vlc-content {
+    padding: 12px 0 0;
+}
+.hp-vlc .hp-vlc-entete-title, .hp-dlc .hp-dlc-entete-title, .hp-clc .hp-clc-entete-title {
+    font-size:1.5em;
+}
+.hp-vlc .hp-vlc-entete, .hp-dlc .hp-dlc-entete, .hp-clc .hp-clc-entete {
+	padding:8px 3.12% 6px;
+}
+.hp-clc .hp-clc-items {
+    display:none;
+}
+.hp-clc .hp-clc-mep {
+    width:auto;
+    margin-right:0;
+}
+.hp-clc .hp-clc-content {
+    padding:12px 0;
+}
+.hp-clc-content-bottom{
+	padding-bottom:0;
+}
+.hp-line4 .sidebar-links-title {
+    font-size:1.1em !important;
+}
+.hp-line4 .last-article {
+    display:none;
+}
+.sidebar-links-text, .hp-vlc-node-text {
+    display:none !important;
+}
+.hp-line4 .sidebar-links-item {
+    float: none;
+    margin-left: 0;
+    width: 100%;
+}
+.hp-line4 .sidebar-links h2 {
+    font-size: 1.1em;
+    margin-bottom:3px;
+}
+.hp-vlc .hp-agenda {
+    display:none;
+}
+.hp-vlc .hp-svg-map {
+    margin-right:0;
+    width:100%;
+}
+.hp-vlc .hp-svg-map a {
+    padding:0 3.12%;
+    font-size:0.9em;
+}
+.hp-video-une .hp-video-content .video-title {
+    margin-bottom:12px;
+    padding:0 3.57%;
+}
+.field.field-name-field-media-description.field-type-text-long.field-label-hidden p, .field.field-name-body.field-type-text-with-summary.field-label-hidden p {
+    font-size:1em;
+    line-height:1.25em;
+    margin-bottom:0;
+}
+.hp-video-une .hp-video-content .video-text {
+    margin-bottom:0;
+    padding:0 3.57%;
+}
+.hp-vlc .hp-vlc-node .hp-vlc-node-title {
+    padding:0 3.12%;
+    font-size:1.1em;
+}
+.hp-dlc .hp-dlc-content-top .hp-dlc-content-label{
+    font-size:1.1em;
+    margin-bottom:10px;
+    padding:0 3.12% 0;
+}
+.hp-dlc .hp-dlc-content-bottom .hp-dlc-content-label{
+    font-size:1.1em;
+    margin-bottom:10px;
+    padding:0;
+}
+.hp-clc .hp-clc-content-label {
+    font-size:1.1em;
+    margin-bottom:10px;
+    padding:0 3.12% 0;
+}
+.hp-vlc .hp-vlc-content-top {
+    padding-bottom:5px;
+}
+#archives-carousel{
+	margin-top:17px;
+}
+#archives-carousel .rub {
+    margin-bottom:15px;
+}
+.hp-dlc-content-bottom .clearfix .flex-caption{
+	margin-top:7px;
+}
+.hp-dlc .hp-dlc-content-bottom{
+	padding:12px 3.12% 15px;
+}
+.hp-dlc .hp-dlc-content-bottom .hp-dlc-content-label{
+	padding:0;
+}
+.hp-clc .hp-clc-content-top {
+    border:none;
+    margin-bottom:5px;
+}
+.hp-clc .hp-clc-mep-text {
+    background:none !important;
+    position:relative;
+    padding:7px 3.12% 12px;
+}
+.hp-clc .hp-clc-mep-rub a {
+    font-size:0.85em;
+}
+
+.hp-clc .hp-clc-mep-title {
+    font-size:1.3em;
+}
+
+.hp-social .hp-social-label {
+    font-size: 1.2em;
+	margin-top:11px;
+}
+
+.hp-social-facebook span, .hp-social-twitter span, .hp-social-youtube span{
+	display:none;
+}
+
+#facebook_like_button_holder, #twitter_follow_button_holder, #yt_subscribe_button_holder{
+	margin-top:-3px;
+}
+
+.hp-social-buttons {
+    float: left;
+}
+
+#facebook_like_button_holder, #twitter_follow_button_holder{
+	margin-right:5px;
+	margin-left:0;
+}
+
+#yt_subscribe_button_holder {
+	margin-right:0;
+	margin-left:0;
+}
+
+.hp-social .hp-social-facebook, .hp-social .hp-social-twitter, .hp-social .hp-social-youtube{
+	margin-right: 10px;
+    margin-top: 5px;
+    min-width: 40px;
+    width: 17%;
+	text-indent:-9999px;
+}
+
+.hp-social {
+    padding: 6px 3.12% 10px;
+}
+
+#term-list-sticky .node-sticky-title a{
+	font-size:1.3em;
+	line-height:1.25em;
+}
+
+#term-list-sticky .node-sticky-rub a{
+	font-size:1em;
+}
+
+/* AGENDA */
+
+
+.initRecherche {
+    display:block;
+    font-size:0.85em;
+    color:#fff;
+    margin:0px 0 0 0;
+    padding:0px 0px 10px 15px;
+    position:relative;
+   
+}
+
+
+
+.initRecherche:hover{
+	text-decoration: none;
+}
+.initRecherche span{
+	  background: url("/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/sprite-agenda.png") no-repeat scroll -50px -50px;
+	  width:20px;
+	  height:20px;
+	  display:inline-block;
+	  position:relative;
+	  top:7px;
+	  margin-left:10px;
+}
+
+.initRecherche:hover span{
+	background: url("/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/sprite-agenda.png") no-repeat scroll 0px -50px;
+}
+
+
+a.anchorFilter {
+    background:#000;
+    opacity: 0.6;
+    position:relative;
+    display:block;
+    text-transform: uppercase;
+    font-size:1em;
+    padding:15px 15px;
+    color:#fff;
+    margin:10px 0 0 0;
+}
+.anchorFilter img {
+    position:absolute;
+    right:10px;
+    top:15px;
+    height:17px;
+    width:17px;
+}
+a.anchorFilter:hover {
+    text-decoration: none;
+}
+
+.anchorFilter img {
+    position:absolute;
+    right:15px;
+    top:18px;
+    height:17px;
+    width:17px;
+}
+
+.block-agenda-header{
+	padding-bottom:0;
+	margin-bottom:10px;
+}
+.context-agenda #region-content {
+}
+.context-agenda #region-sidebar-second {
+    display:block;
+    margin:0 0 20px 0;
+}
+#block-centenaire-event-agenda-tri-type, #block-centenaire-event-agenda-tri-dept {
+    display:none;
+}
+.main-event .odd, .main-event .even {
+    padding:15px;
+}
+.agenda-header-container-inner {
+    padding-top:25px;
+    padding-bottom:20px;
+     padding-left: 15px;
+    background-size:80px 80px;
+
+}
+.agenda-header-container-inner p {
+    display:none;
+}
+h1.agenda-page-title {
+    font-size:1.6em;
+}
+.event-dates {
+    float:none;
+    display:block;
+}
+.event-content {
+    clear:both;
+    margin-left: 0;
+    padding:5px 0 0 0;
+}
+.event-related {
+    display:none;
+}
+.event-title {
+    padding:5px 0 0 0;
+    margin:0 0 5px 0;
+}
+.event-expand-link {
+    display:none;
+}
+.event-date {
+    padding:5px;
+    border-radius: 0;
+    width:auto;
+    float:left;
+    text-align:left;
+    text-transform:lowercase;
+    clear:none;
+}
+.event-more-content .event-location .event-address {
+    float:none;
+    margin:0 0 0px 0;
+    width:100%;
+    padding-top:10px;
+}
+.event-more-content .event-related .one-event {
+    float:none;
+    margin:0 0 0px 0;
+    width:100%;
+}
+.event-date-first > span, .event-date-last > span {
+    display:inline;
+    font-size:0.85em;
+    clear:none;
+    text-transform: lowercase;
+    margin-right:2px;
+}
+.event-date-separator {
+    float: left;
+}
+.event-date-separator span {
+    height:auto;
+    background:#75828E;
+    color:#fff;
+    margin:0;
+    padding:7px 3px 6px 0px;
+    font-size:0.85em;
+}
+h3.sidebar-event-global-title {
+    display: none;
+}
+.event-date-separator span:before {
+    content:"au";
+}
+.agenda-tri-date {
+    display:none;
+}
+#region-sidebar-second .block-centenaire-event h2 {
+    background:url("/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/arrow-extend-event-filter.png") right 14px no-repeat;
+    margin-top:5px;
+    margin-bottom: 5px;
+    padding-top:5px;
+    border:none;
+}
+.block-centenaire-event h2.active {
+    color:#fff !important;
+    background:url("/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/arrow-extend-event-filter-active.png") right 14px no-repeat !important;
+}
+#block-centenaire-event-agenda-tri-region h2, #block-centenaire-event-agenda-tri-countries h2 {
+    background:none !important;
+    color:#fff !important;
+}
+#region-sidebar-second .block-centenaire-event {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    cursor: pointer;
+}
+#block-centenaire-event-agenda-tri-countries .agenda-tri-list .list-item-filter {
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-left:10px;
+}
+
+.item-list .pager-next, .item-list .pager-previous{
+	display:none !important;
+}
+/* END AGENDA */
+
+/*SOCIAL BAR*/
+.hp-social-buttons .btn-follow { display: none; }
+.hp-social-buttons a span.btn-label { width: 100%; }
+.hp-social-buttons a { width: auto;}
+.hp-social-buttons a span.btn-label, .hp-social-buttons a span.btn-follow {
+    display: inline-block;
+}
+.hp-social-facebook a:hover{
+	background:url(/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/fb-bg_btn_white.png) no-repeat center center rgba(98, 122, 171, 0.2);
+}
+.hp-social-facebook a{
+	padding:1px 20px;
+	background:url(/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/fb-bg_btn.png) no-repeat center center rgba(0, 0, 0, 0.2);	
+}
+.hp-social-twitter a{
+	padding:1px 20px;
+	background:url(/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/twitter-bg_btn.png) no-repeat center center rgba(0, 0, 0, 0.2);
+}
+.hp-social-twitter a:hover{
+	background:url(/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/twitter-bg_btn_white.png) no-repeat center center rgba(12, 170, 230, 0.2);
+}
+
+.hp-social-youtube a{
+	background:url(/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/yt-bg_btn.png) no-repeat center center rgba(0, 0, 0, 0.2);
+	padding:1px 20px;	
+}
+
+.hp-social-youtube a:hover{
+	background:url(/web/20210702033214im_/https://www.centenaire.org/sites/all/themes/centenaire/images/yt-bg_btn_white.png) no-repeat center center rgba(207, 51, 45, 0.2);
+}	
+.event-more-content .node-share ul li{
+    margin-right:15px !important;
+}
+
+  .event-more-content .node-share{
+    margin-top:0 !important;
+      
+  }
+.event-more-content .node-share ul:first-child li.item-0{
+    display:none;
+}
+
+/****** Inscription newsletter form******/
+.inscription-nl-block form{
+    margin-top: 20px;
+}
+
+.inscription-nl-block #fieldEmail{
+    width: 88%;
+    margin-bottom: 20px;
+    margin-top: 3px;
+}
+
+#hp-line5.bis {
+    margin-top: 20px;
+    padding: 0;
+    background-repeat: repeat;
+}
+#hp-line5.bis .rss-bis,
+#hp-line5.bis .tvbis,
+#hp-line5.bis .radiobis {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#hp-line5.bis .rss-header-logo { background-position: center top; }
+#hp-line5.bis .tvbis img,
+#hp-line5.bis .radiobis img {
+    margin: 0 auto 10px auto;
+}
+/*
+     FILE ARCHIVED ON 03:32:14 Jul 02, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 04:43:09 Jun 08, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 101.387
+  exclusion.robots: 0.113
+  exclusion.robots.policy: 0.105
+  cdx.remote: 0.068
+  esindex: 0.009
+  LoadShardBlock: 66.893 (3)
+  PetaboxLoader3.datanode: 136.75 (5)
+  CDXLines.iter: 22.575 (3)
+  load_resource: 1840.209 (2)
+  PetaboxLoader3.resolve: 1736.977 (2)
+*/

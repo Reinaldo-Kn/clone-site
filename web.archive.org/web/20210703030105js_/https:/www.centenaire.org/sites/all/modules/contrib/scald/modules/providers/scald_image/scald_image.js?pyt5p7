@@ -1,0 +1,97 @@
+var _____WB$wombat$assign$function_____ = function(name) {return (self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };
+if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; return this; } }
+{
+  let window = _____WB$wombat$assign$function_____("window");
+  let self = _____WB$wombat$assign$function_____("self");
+  let document = _____WB$wombat$assign$function_____("document");
+  let location = _____WB$wombat$assign$function_____("location");
+  let top = _____WB$wombat$assign$function_____("top");
+  let parent = _____WB$wombat$assign$function_____("parent");
+  let frames = _____WB$wombat$assign$function_____("frames");
+  let opener = _____WB$wombat$assign$function_____("opener");
+
+(function ($) {
+  Drupal.behaviors.scaldImage = {
+    attach: function (context, settings) {
+      if (typeof Drupal.dndck4 !== 'undefined') {
+        Drupal.dndck4.addOption('txtLink', 'image', 'atom', 'scald_image', function (infoTab, dialogDefinition) {
+          infoTab.add({
+            id: 'txtLink',
+            type: 'text',
+            label: Drupal.t('Link'),
+            // "Link" edits the 'link' property in the options JSON string.
+            setup: function (widget) {
+              var options = JSON.parse(widget.data.options);
+              if (options.link) {
+                this.setValue(decodeURIComponent(options.link));
+              }
+            },
+            commit: function (widget) {
+              // Copy the current options into a new object,
+              var options = JSON.parse(widget.data.options);
+              var value = this.getValue();
+              if (value != '') {
+                options.link = encodeURIComponent(value);
+              }
+              else {
+                delete options.link;
+              }
+              widget.setData('options', JSON.stringify(options));
+            }
+          });
+        });
+        Drupal.dndck4.addOption('cmbLinkTarget', 'image', 'atom', 'scald_image', function (infoTab, dialogDefinition) {
+          infoTab.add({
+            id: 'cmbLinkTarget',
+            type: 'select',
+            label: Drupal.t('Link Target'),
+            items: [[Drupal.t('None'), '_self'], [Drupal.t('Blank'), '_blank'], [Drupal.t('Parent'), '_parent']],
+            // "Link Target" edits the 'linkTarget' property in the options JSON string.
+            setup: function (widget) {
+              var options = JSON.parse(widget.data.options);
+              if (options.linkTarget) {
+                this.setValue(options.linkTarget);
+              }
+            },
+            commit: function (widget) {
+              // Copy the current options into a new object,
+              var options = JSON.parse(widget.data.options);
+              var value = this.getValue();
+              if (value != '') {
+                options.linkTarget = value;
+              }
+              else {
+                delete options.linkTarget;
+              }
+              widget.setData('options', JSON.stringify(options));
+            }
+          });
+        });
+      }
+    }
+  };
+})(jQuery);
+
+
+}
+/*
+     FILE ARCHIVED ON 13:13:13 Jun 25, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 08:38:06 Jun 08, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 1782.006
+  exclusion.robots: 0.15
+  exclusion.robots.policy: 0.138
+  cdx.remote: 0.101
+  esindex: 0.014
+  LoadShardBlock: 55.504 (3)
+  PetaboxLoader3.datanode: 80.201 (5)
+  CDXLines.iter: 14.869 (3)
+  load_resource: 234.375 (2)
+  PetaboxLoader3.resolve: 177.328 (2)
+*/

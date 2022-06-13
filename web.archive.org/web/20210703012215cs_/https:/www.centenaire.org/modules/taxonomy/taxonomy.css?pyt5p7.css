@@ -1,0 +1,35 @@
+
+tr.taxonomy-term-preview {
+  background-color: #EEE;
+}
+tr.taxonomy-term-divider-top {
+  border-bottom: none;
+}
+tr.taxonomy-term-divider-bottom {
+  border-top: 1px dotted #CCC;
+}
+.taxonomy-term-description {
+  margin: 5px 0 20px;
+}
+
+/*
+     FILE ARCHIVED ON 22:32:44 Apr 30, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 09:57:55 Jun 08, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 63.943
+  exclusion.robots: 0.113
+  exclusion.robots.policy: 0.105
+  RedisCDXSource: 0.69
+  esindex: 0.007
+  LoadShardBlock: 49.654 (3)
+  PetaboxLoader3.datanode: 119.674 (5)
+  CDXLines.iter: 11.592 (3)
+  load_resource: 312.45 (2)
+  PetaboxLoader3.resolve: 151.519 (2)
+*/

@@ -1,0 +1,54 @@
+
+.locale-untranslated {
+  font-style: normal;
+  text-decoration: line-through;
+}
+
+#locale-translation-filter-form .form-item-language,
+#locale-translation-filter-form .form-item-translation,
+#locale-translation-filter-form .form-item-group {
+  float: left; /* LTR */
+  padding-right: .8em; /* LTR */
+  margin: 0.1em;
+  /**
+   * In Opera 9, DOM elements with the property of "overflow: auto"
+   * will partially hide its contents with unnecessary scrollbars when
+   * its immediate child is floated without an explicit width set.
+   */
+  width: 15em;
+}
+#locale-translation-filter-form .form-type-select select {
+  width: 100%;
+}
+#locale-translation-filter-form .form-actions {
+  float: left; /* LTR */
+  padding: 3ex 0 0 1em; /* LTR */
+}
+.language-switcher-locale-session a.active {
+  color: #0062A0;
+}
+.language-switcher-locale-session a.session-active {
+  color: #000000;
+}
+
+/*
+     FILE ARCHIVED ON 03:32:14 Jul 02, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 11:31:21 Jun 08, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 68.058
+  exclusion.robots: 0.074
+  exclusion.robots.policy: 0.068
+  RedisCDXSource: 0.454
+  esindex: 0.006
+  LoadShardBlock: 50.82 (3)
+  PetaboxLoader3.datanode: 67.995 (4)
+  CDXLines.iter: 13.994 (3)
+  load_resource: 90.801
+  PetaboxLoader3.resolve: 68.144
+*/

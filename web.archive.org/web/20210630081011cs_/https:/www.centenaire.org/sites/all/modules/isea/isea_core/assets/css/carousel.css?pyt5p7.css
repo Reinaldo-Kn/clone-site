@@ -1,0 +1,97 @@
+html.js .isea-carousel {
+  position:relative;
+  /*height:100px;*/
+}
+html.js .isea-carousel.min .next,
+html.js .isea-carousel.min .prev {
+  visibility: hidden;
+  display: none;
+}
+html.js .isea-carousel .prev {
+  float:left;
+  cursor:pointer;
+}
+html.js .isea-carousel a.disabled {
+visibility: visible;
+cursor: default;
+}
+html.js .isea-carousel .next {
+  float:right;
+  cursor:pointer;
+}
+html.js .isea-carousel .main {
+  position:relative;
+  overflow:hidden;
+  float: left;
+}
+html.js .isea-carousel .items {
+  position:relative;
+  width:20000em;
+  clear: both;
+}
+html.js .isea-carousel .item {
+  float:left;
+}
+
+.isea-carousel .item {
+  margin:0;
+  /*overflow:hidden;*/
+}
+
+/** carousel 2**/
+html.js .isea-carousel.type2 .main {
+  top: 0;
+  left: 0;
+}
+html.js .isea-carousel.type2 .item {
+  float:left;
+  width: 940px;
+}
+html.js .isea-carousel.type2 .slide-actions {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  zoom:1;
+  z-index: 5;
+}
+html.js .isea-carousel.type2 .slide-actions a {
+  cursor: pointer;
+}
+
+html.js .isea-carousel.type2 .navi-left,
+html.js .isea-carousel.type2 .navi,
+html.js .isea-carousel.type2 .navi-right{
+  float: right;
+  display: block;
+}
+html.js .isea-carousel.type2  .navi a {
+  float: left;
+  width: 9px;
+  height:9px;
+  margin-top: 3px;
+}
+html.js .isea-carousel.type2 .slide-actions .navi a.active {
+  background-position: -50px -550px;
+}
+
+/*
+     FILE ARCHIVED ON 03:32:14 Jul 02, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 11:40:55 Jun 08, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 68.745
+  exclusion.robots: 0.092
+  exclusion.robots.policy: 0.085
+  cdx.remote: 0.063
+  esindex: 0.01
+  LoadShardBlock: 30.783 (3)
+  PetaboxLoader3.datanode: 43.789 (4)
+  CDXLines.iter: 15.629 (3)
+  load_resource: 64.245
+  PetaboxLoader3.resolve: 48.286
+*/

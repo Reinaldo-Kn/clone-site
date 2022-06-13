@@ -1,0 +1,64 @@
+/* This CSS file needs to be included either in the theme used for
+ * editing content in order to be included in the WYSIWYG edit iframe,
+ * or specifically included in the WYSIWYG config page's
+ * "Define CSS" textfield.
+ */
+span[data-picture-align="left"],
+img[data-picture-align="left"] {
+  float: left;
+}
+span[data-picture-align="right"],
+img[data-picture-align="right"] {
+  float: right;
+}
+span[data-picture-align="center"],
+img[data-picture-align="center"] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Remove ugly boarders that bunch up in the image dialog table. */
+.cke_dialog_body tr td:last-child {
+  border-right: 0px;
+}
+
+/* The following is an example of what you could put in your theme
+ * to control the size of images. It is formatted as
+ * span[data-picture-mapping="[The machine name of your picture mapping]"
+  span[data-picture-mapping="wide"] {
+    width: 100%;
+  }
+  span[data-picture-mapping="normal"] {
+    width: 50%;
+  }
+  span[data-picture-mapping="narrow"] {
+    width: 33%;
+  }
+  span[data-picture-mapping] img {
+    width: 100%;
+    height: auto;
+  }
+*/
+
+/*
+     FILE ARCHIVED ON 14:34:45 Mar 23, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 07:33:00 Jun 08, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 110.723
+  exclusion.robots: 0.101
+  exclusion.robots.policy: 0.093
+  cdx.remote: 0.077
+  esindex: 0.01
+  LoadShardBlock: 74.124 (3)
+  PetaboxLoader3.datanode: 124.155 (5)
+  CDXLines.iter: 22.375 (3)
+  load_resource: 184.242 (2)
+  PetaboxLoader3.resolve: 89.755 (2)
+*/

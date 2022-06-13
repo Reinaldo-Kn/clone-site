@@ -1,0 +1,76 @@
+/**
+ * @file
+ * Styling for the Forum module.
+ */
+
+#forum .description {
+  font-size: 0.9em;
+  margin: 0.5em;
+}
+#forum td.created,
+#forum td.posts,
+#forum td.topics,
+#forum td.last-reply,
+#forum td.replies,
+#forum td.pager {
+  white-space: nowrap;
+}
+
+#forum td.forum .icon {
+  background-image: url(/web/20210702033214im_/https://www.centenaire.org/misc/forum-icons.png);
+  background-repeat: no-repeat;
+  float: left; /* LTR */
+  height: 24px;
+  margin: 0 9px 0 0; /* LTR */
+  width: 24px;
+}
+#forum td.forum .forum-status-new {
+  background-position: -24px 0;
+}
+
+#forum div.indent {
+  margin-left: 20px; /* LTR */
+}
+#forum .icon div {
+  background-image: url(/web/20210702033214im_/https://www.centenaire.org/misc/forum-icons.png);
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+}
+#forum .icon .topic-status-new {
+  background-position: -24px 0;
+}
+#forum .icon .topic-status-hot {
+  background-position: -48px 0;
+}
+#forum .icon .topic-status-hot-new {
+  background-position: -72px 0;
+}
+#forum .icon .topic-status-sticky {
+  background-position: -96px 0;
+}
+#forum .icon .topic-status-closed {
+  background-position: -120px 0;
+}
+
+/*
+     FILE ARCHIVED ON 03:32:14 Jul 02, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 08:11:17 Jun 08, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 326.842
+  exclusion.robots: 0.115
+  exclusion.robots.policy: 0.108
+  RedisCDXSource: 4.274
+  esindex: 0.007
+  LoadShardBlock: 306.428 (3)
+  PetaboxLoader3.datanode: 304.543 (4)
+  CDXLines.iter: 13.28 (3)
+  load_resource: 88.153
+  PetaboxLoader3.resolve: 37.253
+*/

@@ -1,0 +1,47 @@
+.ctools-locked {
+  color: red;
+  border: 1px solid red;
+  padding: 1em;
+}
+
+.ctools-owns-lock {
+  background: #FFFFDD none repeat scroll 0 0;
+  border: 1px solid #F0C020;
+  padding: 1em;
+}
+
+a.ctools-ajaxing,
+input.ctools-ajaxing,
+button.ctools-ajaxing,
+select.ctools-ajaxing {
+  padding-right: 18px !important;
+  background: url(/web/20210702033214im_/https://www.centenaire.org/sites/all/modules/contrib/ctools/images/status-active.gif) right center no-repeat;
+}
+
+div.ctools-ajaxing {
+  float: left;
+  width: 18px;
+  background: url(/web/20210702033214im_/https://www.centenaire.org/sites/all/modules/contrib/ctools/images/status-active.gif) center center no-repeat;
+}
+
+/*
+     FILE ARCHIVED ON 03:32:14 Jul 02, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 08:23:54 Jun 08, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 1564.604
+  exclusion.robots: 0.133
+  exclusion.robots.policy: 0.12
+  cdx.remote: 0.082
+  esindex: 0.011
+  LoadShardBlock: 94.818 (3)
+  PetaboxLoader3.datanode: 119.935 (4)
+  CDXLines.iter: 15.954 (3)
+  load_resource: 79.545
+  PetaboxLoader3.resolve: 41.365
+*/

@@ -1,0 +1,1024 @@
+.megamenu-block .block-subnav/*
+ * ==========================================================
+ * Grid
+ * ==========================================================
+ */
+
+.grid-1, .grid-2, .grid-3, .grid-4, .grid-5, .grid-6, .grid-7, .grid-8, .grid-9, .grid-10, 
+.grid-11, .grid-12, .grid-13, .grid-14, .grid-15, .grid-16, .grid-17, .grid-18, .grid-19, 
+.grid-20, .grid-21, .grid-22, .grid-23 {
+  display: inline;
+  float: left;
+  position: relative;
+  margin-right: 1,052631579%;
+}
+
+.grid-24 {
+  display: inline;
+  float: left;
+  position: relative;
+}
+
+.push-1, .pull-1, .push-2, .pull-2, .push-3, .pull-3, .push-4, .pull-4,
+.push-5, .pull-5, .push-6, .pull-6, .push-7, .pull-7, .push-8, .pull-8,
+.push-9, .pull-9, .push-10, .pull-10, .push-11, .pull-11, .push-12, .pull-12,
+.push-13, .pull-13, .push-14, .pull-14, .push-15, .pull-15, .push-16, .pull-16,
+.push-17, .pull-17, .push-18, .pull-18, .push-19, .pull-19, .push-20, .pull-20,
+.push-21, .pull-21, .push-22, .pull-22, .push-23, .pull-23, .push-24, .pull-24 {
+  position: relative;
+}
+
+/*
+ * ==========================================================
+ * Alpha - Omega
+ * ==========================================================
+ */
+
+.alpha {
+  margin-left: 0;
+}
+
+.omega {
+  margin-right: 0;
+}
+
+/*
+ * ==========================================================
+ * Container
+ * ==========================================================
+ */
+
+.container-24 {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+/*
+ * ==========================================================
+ * Columns
+ * ==========================================================
+ */
+
+.container-24 .grid-1 {
+  width: 3.157894737%;
+}
+
+.container-24 .grid-2 {
+  width: 7.368421053%;
+}
+
+.container-24 .grid-3 {
+  width: 11.57894737%;
+}
+
+.container-24 .grid-4 {
+  width: 15.78947368%;
+}
+
+.container-24 .grid-5 {
+  width: 20%;
+}
+
+.container-24 .grid-6 {
+  width: 24.21052632%;
+}
+
+.container-24 .grid-7 {
+  width: 28.42105263%;
+}
+
+.container-24 .grid-8 {
+  width: 32.63157895%;
+}
+
+.container-24 .grid-9 {
+  width: 36.84210526%;
+}
+
+.container-24 .grid-10 {
+  width: 41.05263158%;
+}
+
+.container-24 .grid-11 {
+  width: 45.26315789%;
+}
+
+.container-24 .grid-12 {
+  width: 49.47368421%;
+}
+
+.container-24 .grid-13 {
+  width: 53.68421053%;
+}
+
+.container-24 .grid-14 {
+  width: 57.89473684%;
+}
+
+.container-24 .grid-15 {
+  width: 62.10526316%;
+}
+
+.container-24 .grid-16 {
+  width: 66.31578947%;
+}
+
+.container-24 .grid-17 {
+  width: 70.52631579%;
+}
+
+.container-24 .grid-18 {
+  width: 74.73684211%;
+}
+
+.container-24 .grid-19 {
+  width: 78.94736842%;
+}
+
+.container-24 .grid-20 {
+  width: 83.15789474%;
+}
+
+.container-24 .grid-21 {
+  width: 87.36842105%;
+}
+
+.container-24 .grid-22 {
+  width: 91.57894737%;
+}
+
+.container-24 .grid-23 {
+  width: 95.78947368%;
+}
+
+.container-24 .grid-24 {
+  width: 100%;
+}
+
+/*
+ * ==========================================================
+ * Prefix
+ * ==========================================================
+ */
+
+.container-24 .prefix-1 {
+  padding-left: 4.167%;
+}
+
+.container-24 .prefix-2 {
+  padding-left: 8.333%;
+}
+
+.container-24 .prefix-3 {
+  padding-left: 12.5%;
+}
+
+.container-24 .prefix-4 {
+  padding-left: 16.667%;
+}
+
+.container-24 .prefix-5 {
+  padding-left: 20.833%;
+}
+
+.container-24 .prefix-6 {
+  padding-left: 25.0%;
+}
+
+.container-24 .prefix-7 {
+  padding-left: 29.167%;
+}
+
+.container-24 .prefix-8 {
+  padding-left: 33.333%;
+}
+
+.container-24 .prefix-9 {
+  padding-left: 37.5%;
+}
+
+.container-24 .prefix-10 {
+  padding-left: 41.667%;
+}
+
+.container-24 .prefix-11 {
+  padding-left: 45.833%;
+}
+
+.container-24 .prefix-12 {
+  padding-left: 50.0%;
+}
+
+.container-24 .prefix-13 {
+  padding-left: 54.167%;
+}
+
+.container-24 .prefix-14 {
+  padding-left: 58.333%;
+}
+
+.container-24 .prefix-15 {
+  padding-left: 62.5%;
+}
+
+.container-24 .prefix-16 {
+  padding-left: 66.667%;
+}
+
+.container-24 .prefix-17 {
+  padding-left: 70.833%;
+}
+
+.container-24 .prefix-18 {
+  padding-left: 75.0%;
+}
+
+.container-24 .prefix-19 {
+  padding-left: 79.167%;
+}
+
+.container-24 .prefix-20 {
+  padding-left: 83.333%;
+}
+
+.container-24 .prefix-21 {
+  padding-left: 87.5%;
+}
+
+.container-24 .prefix-22 {
+  padding-left: 91.667%;
+}
+
+.container-24 .prefix-23 {
+  padding-left: 95.833%;
+}
+
+/*
+ * ==========================================================
+ * Suffix
+ * ==========================================================
+ */
+
+.container-24 .suffix-1 {
+  padding-right: 4.167%;
+}
+
+.container-24 .suffix-2 {
+  padding-right: 8.333%;
+}
+
+.container-24 .suffix-3 {
+  padding-right: 12.5%;
+}
+
+.container-24 .suffix-4 {
+  padding-right: 16.667%;
+}
+
+.container-24 .suffix-5 {
+  padding-right: 20.833%;
+}
+
+.container-24 .suffix-6 {
+  padding-right: 25.0%;
+}
+
+.container-24 .suffix-7 {
+  padding-right: 29.167%;
+}
+
+.container-24 .suffix-8 {
+  padding-right: 33.333%;
+}
+
+.container-24 .suffix-9 {
+  padding-right: 37.5%;
+}
+
+.container-24 .suffix-10 {
+  padding-right: 41.667%;
+}
+
+.container-24 .suffix-11 {
+  padding-right: 45.833%;
+}
+
+.container-24 .suffix-12 {
+  padding-right: 50.0%;
+}
+
+.container-24 .suffix-13 {
+  padding-right: 54.167%;
+}
+
+.container-24 .suffix-14 {
+  padding-right: 58.333%;
+}
+
+.container-24 .suffix-15 {
+  padding-right: 62.5%;
+}
+
+.container-24 .suffix-16 {
+  padding-right: 66.667%;
+}
+
+.container-24 .suffix-17 {
+  padding-right: 70.833%;
+}
+
+.container-24 .suffix-18 {
+  padding-right: 75.0%;
+}
+
+.container-24 .suffix-19 {
+  padding-right: 79.167%;
+}
+
+.container-24 .suffix-20 {
+  padding-right: 83.333%;
+}
+
+.container-24 .suffix-21 {
+  padding-right: 87.5%;
+}
+
+.container-24 .suffix-22 {
+  padding-right: 91.667%;
+}
+
+.container-24 .suffix-23 {
+  padding-right: 95.833%;
+}
+
+/*
+ * ==========================================================
+ * Push
+ * ==========================================================
+ */
+
+.container-24 .push-1 {
+  left: 4.167%;
+}
+
+.container-24 .push-2 {
+  left: 8.333%;
+}
+
+.container-24 .push-3 {
+  left: 12.5%;
+}
+
+.container-24 .push-4 {
+  left: 16.667%;
+}
+
+.container-24 .push-5 {
+  left: 20.833%;
+}
+
+.container-24 .push-6 {
+  left: 25.0%;
+}
+
+.container-24 .push-7 {
+  left: 29.167%;
+}
+
+.container-24 .push-8 {
+  left: 33.333%;
+}
+
+.container-24 .push-9 {
+  left: 37.5%;
+}
+
+.container-24 .push-10 {
+  left: 41.667%;
+}
+
+.container-24 .push-11 {
+  left: 45.833%;
+}
+
+.container-24 .push-12 {
+  left: 50.0%;
+}
+
+.container-24 .push-13 {
+  left: 54.167%;
+}
+
+.container-24 .push-14 {
+  left: 58.333%;
+}
+
+.container-24 .push-15 {
+  left: 62.5%;
+}
+
+.container-24 .push-16 {
+  left: 66.667%;
+}
+
+.container-24 .push-17 {
+  left: 70.833%;
+}
+
+.container-24 .push-18 {
+  left: 75.0%;
+}
+
+.container-24 .push-19 {
+  left: 79.167%;
+}
+
+.container-24 .push-20 {
+  left: 83.333%;
+}
+
+.container-24 .push-21 {
+  left: 87.5%;
+}
+
+.container-24 .push-22 {
+  left: 91.667%;
+}
+
+.container-24 .push-23 {
+  left: 95.833%;
+}
+
+/*
+ * ==========================================================
+ * Pull
+ * ==========================================================
+ */
+
+.container-24 .pull-1 {
+  left: -4.167%;
+}
+
+.container-24 .pull-2 {
+  left: -8.333%;
+}
+
+.container-24 .pull-3 {
+  left: -12.5%;
+}
+
+.container-24 .pull-4 {
+  left: -16.667%;
+}
+
+.container-24 .pull-5 {
+  left: -20.833%;
+}
+
+.container-24 .pull-6 {
+  left: -25.0%;
+}
+
+.container-24 .pull-7 {
+  left: -29.167%;
+}
+
+.container-24 .pull-8 {
+  left: -33.333%;
+}
+
+.container-24 .pull-9 {
+  left: -37.5%;
+}
+
+.container-24 .pull-10 {
+  left: -41.667%;
+}
+
+.container-24 .pull-11 {
+  left: -45.833%;
+}
+
+.container-24 .pull-12 {
+  left: -50.0%;
+}
+
+.container-24 .pull-13 {
+  left: -54.167%;
+}
+
+.container-24 .pull-14 {
+  left: -58.333%;
+}
+
+.container-24 .pull-15 {
+  left: -62.5%;
+}
+
+.container-24 .pull-16 {
+  left: -66.667%;
+}
+
+.container-24 .pull-17 {
+  left: -70.833%;
+}
+
+.container-24 .pull-18 {
+  left: -75.0%;
+}
+
+.container-24 .pull-19 {
+  left: -79.167%;
+}
+
+.container-24 .pull-20 {
+  left: -83.333%;
+}
+
+.container-24 .pull-21 {
+  left: -87.5%;
+}
+
+.container-24 .pull-22 {
+  left: -91.667%;
+}
+
+.container-24 .pull-23 {
+  left: -95.833%;
+}
+
+/*
+ * GENERAL
+ *
+*/
+#block-menu-menu-top-navigation {
+  display: block;
+}
+
+
+/*
+ * MEGAMENU
+ *
+*/
+#block-centenaire-megamenu-megamenu-normal {
+  display: block;
+}
+#megamenu {
+  position: relative;
+  display: block;
+  z-index: 200;
+  zoom:1;
+   padding: 10px 0 20px;
+}
+
+#megamenu .megamenu-block {
+  width: 32%;
+  margin-left:2%;
+  float: left;
+  display: block;
+}
+#megamenu .megamenu-block.item-0 {
+  margin-left: 0;
+}
+
+.megamenu-block ul.niv1 li.niv1 {
+    float: left;
+    height: 54px;
+    list-style: none outside none;
+    padding: 0;
+    text-align: center;
+    width: 49.8%;
+}
+
+
+
+.megamenu-block ul.niv1 li.niv1 span {
+  vertical-align: middle;
+  height: 54px;
+  width: 100%;
+  cursor: pointer;
+  line-height:54px;
+  text-align:center; /* centrage horizontal */
+}
+
+.megamenu-block ul.niv1 li.niv1 span a {
+  width:100%; /* largeur zone de texte */
+  vertical-align:middle;
+  display:inline-block;
+  line-height:1.2; /* on rétablit le line-height */
+  text-align:center; /* ... et l'alignement du texte */
+}
+
+.megamenu-block.item-1 ul.niv1 li.niv1.item-1 span a {
+  width:120px; /* largeur zone de texte */
+}
+
+
+.megamenu-block ul.niv1 li a { 
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  text-decoration:none; 
+}
+.megamenu-block ul.niv1 li a.double-line{
+  line-height: 15px;
+}
+.megamenu-block ul.niv1 li:hover{
+  background: #ececec !important;
+  cursor:pointer;
+  color: #000;
+}
+.megamenu-block ul.niv1 li:hover span.niv1-title a {
+  color: #6A6A6A;
+}
+
+.megamenu-block.item-0 ul.niv1 li.niv1.on span { color: #535657; }
+.megamenu-block.item-0 ul.niv1 li{ border-left: 1px solid #67696a; }
+.megamenu-block.item-0 ul.niv1 li.niv1.item-0 { border-left: 0; }
+
+
+.megamenu-block.item-1 .menu-label{color: #6b7b80;}
+.megamenu-block.item-1 ul.niv1{background: #5d6b70;}
+.megamenu-block.item-1 ul.niv1 li.niv1.on span{color: #5d6b70;}
+.megamenu-block.item-1 ul.niv1 li { border-left: 1px solid #6f7b7f;}
+.megamenu-block.item-1 ul.niv1 li.niv1.item-0 { border-left: 0; }
+
+.megamenu-block.item-2 .menu-label{color: #526c75;}
+.megamenu-block.item-2 ul.niv1{background: #41565d;}
+.megamenu-block.item-2 ul.niv1 li.niv1.on span{color: #41565d;}
+.megamenu-block.item-2 ul.niv1 li{border-left: 1px solid #58696f;}
+.megamenu-block.item-2 ul.niv1 li.niv1.item-0 { border-left: 0; }
+
+.megamenu-block ul.niv1 li li {border-left: none !important;}
+
+.megamenu-block .menu-label {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #8c8e8e;
+  font-size: 1.250em;
+  font-weight: normal;
+  display: block;
+}
+.megamenu-block ul.niv1 {
+  margin: 0;
+  padding: 0;
+  background: #535657;
+}
+.megamenu-block ul.niv1 li.niv1.on {
+  background: #ececec;
+}
+
+
+.megamenu-block.item-0 ul.niv1 li.niv1.current {
+  background: #c6c8c7;
+}
+
+.megamenu-block.item-0 ul.niv1 li.niv1.current a {
+  color:#545557;
+  }
+
+
+.megamenu-block.item-1 ul.niv1 li.niv1.current {
+  background: #b4c2c5;
+}
+
+.megamenu-block.item-1 ul.niv1 li.niv1.current a {
+  color:#5c6b70;
+  }
+
+
+.megamenu-block.item-2 ul.niv1 li.niv1.current {
+  background: #92a6ad;
+}
+
+.megamenu-block.item-2 ul.niv1 li.niv1.current a {
+  color: #41555c;
+}
+
+
+
+
+.megamenu-block ul.niv1 li span.niv1-title {
+  font-size: 14px;
+}
+.megamenu-block ul.niv1 li.item-0 span.niv1-title {
+  border-left: 0;
+}
+.megamenu-block .niv1-title {
+  font-size: 0.8em;
+  color: #fff;
+}
+.megamenu-block .niv1-title a {
+  color: #fff;
+}
+.megamenu-block .block-subnav {
+  display: none;
+  position: absolute;
+  top: 92px;
+  left: 0;
+  background: #ececec;
+  width: 96%;
+  padding: 2%;
+  z-index: 9999;
+  zoom:1;
+  text-align: left;
+  -webkit-box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow:    0px 4px 5px rgba(0, 0, 0, 0.35);
+  box-shadow:         0px 4px 5px rgba(0, 0, 0, 0.35);
+}
+.megamenu-block .block-subnav-content {
+  position: relative;
+}
+.megamenu-block ul.niv1 li .block-subnav  a {
+  text-align: left !important;
+  display: inline;
+}
+.megamenu-block ul.niv1 li.on .block-subnav {
+ 
+}
+#megamenu .field-name-field-subnav-node-label,
+#megamenu .field-name-field-subnav-text-label,
+#megamenu.megamenu-v2 .megamenu-label-taxo {
+  color: #6a6a6a;
+  text-transform: uppercase;
+  font-size: 1em;
+  border-bottom: 1px solid #b2b3b4;
+  padding-bottom: 8px;
+  display: block;
+  margin-bottom: 19px;
+  text-align: left;
+}
+#megamenu .block-subnav-nodes {
+  float: left;
+  width: 70%;
+  margin-right: 2%;
+}
+#megamenu .block-subnav-text {
+  float: left;
+  width: 28%;
+  position: relative;
+  zoom:1;
+}
+#megamenu .block-subnav-text .field-name-field-menu-subnav-text {
+  /*background: url(/web/20210702033215im_/https://www.centenaire.org/sites/all/themes/centenaire/images/motif-menu-open.png) repeat 0 0;*/
+  background:#e4e4e4;
+  padding: 13px 17px 5px;
+  text-align: left;
+}
+#megamenu .block-subnav-text .field-name-field-menu-subnav-text a {
+  color :#6A909C;
+  background: none;
+  display:block;
+}
+
+#megamenu .block-subnav-text .field-name-field-menu-subnav-text a:hover
+{
+   color :#2D2F30;
+   background:#E4E4E4 !important;  
+}
+
+#megamenu .block-subnav-text .field-name-field-menu-subnav-text ul
+{
+padding:0;  
+}
+#megamenu .more-link-megamenu {
+  float: right;
+  margin-top: 10px;
+  display: inline-block;
+}
+#megamenu .more-link-megamenu a {
+  display: inline-block;
+  background: #3a4145;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  color:#fff;
+}
+#megamenu .more-link-megamenu a:hover {
+  background: #303639;
+  color: #fff;
+}
+
+#megamenu .block-subnav-text .field-name-field-menu-subnav-text ul li {margin-bottom: 10px; list-style-type:none;}
+#megamenu .field-name-field-menu-subnav-node > .field-items > .field-item,
+#megamenu.megamenu-v2 .block-subnav.v-1 .item-0 {
+  margin-right: 4%;
+}
+#megamenu .field-name-field-menu-subnav-node > .field-items > .field-item.odd {
+  margin-right: 0;
+}
+#megamenu .field-name-field-article-media-image,
+#megamenu .field-name-field-media-video-thumb,
+#megamenu .field-name-field-media-image  {
+  margin-bottom: 10px;
+}
+#megamenu .field-name-field-article-media { display: none;}
+#megamenu .field-name-field-menu-subnav-node .field-item .title{ line-height:1.3; }
+#megamenu .field-name-field-menu-subnav-node .field-item .title a{font-size: 18px;}
+#megamenu .field-name-field-menu-subnav-node .field-item .title a:hover{text-decoration:none; color:#2D2F30}
+#megamenu .field-name-field-menu-subnav-node img {
+  display: block;
+  /* border: 1px solid #c1c1c1; */
+}
+#megamenu .field-name-field-menu-subnav-node .field-item,
+#megamenu.megamenu-v2 .block-subnav.v-1 .subnav-node-item {
+  width: 48%;
+  float: left;
+}
+#megamenu .field-name-field-menu-subnav-text {
+  color: #535657;
+  font-size: 0.875em;
+}
+#megamenu .node-megamenu-illus {
+  position: relative;
+  margin-bottom: 10px;
+}
+#megamenu .node-megamenu-illus a { padding: 0;}
+
+
+/*
+ * HP
+ *
+*/
+
+.hp-video-une .hp-video-content iframe {
+  height: 419px;
+}
+
+/*
+ * MEDIA
+ *
+*/
+.bar-slide-action {
+  top: 621px;
+}
+.bar-slide-action ul {
+
+}
+#full-media-diapo .item {
+
+}
+#full-media-diapo .article-illustration {
+  /* width: 100%; */
+  max-width: 1200px;
+  height: auto;
+  max-height: 675px;
+}
+
+#full-media-diapo .browse.next {
+  left: 1250px;
+}
+.node-type-media .field-name-field-media-video-id {
+  height: 675px;
+}
+
+/*
+ * FOOTER
+ *
+*/
+.node-footer-content .field-name-field-footer-content-ministry ul.field-items {
+  margin: 0 auto;
+}
+
+#hp-slide-article .browse.prev
+{
+left:-150px;  
+}
+
+#hp-slide-article .browse.next
+{
+right:-150px; 
+}
+
+#hp-slide-article {
+ min-height:680px;
+}
+
+.block-col2-node-doc-join .doc-join, .block-col2-node-article-join .article-join .article-join-rub{
+  width:100%;
+}
+
+.page-taxonomy-term .node-teaser .node-teaser-content h2 a{
+    font-size: 1.1em !important;
+}
+
+html.js body.html div#page.page section#section-content.section div#zone-content-wrapper.zone-wrapper div#zone-content.zone div#region-pre-content.grid-24 div.region-inner div#block-system-main.block div.block-inner div.content article#node-media-421.node div.content div.field-name-field-media-image img{
+  margin:0 auto;
+}
+
+
+
+.node-media.node-full .field-name-field-media-image{
+  width:auto;
+}
+
+.edito-wrapper .edito-inner {
+    padding-right: 140px;
+}
+
+/* Search bar */
+
+.form-text {
+    width: 310px;
+}
+
+
+.col-soon .item {
+  margin:0px;
+}
+
+/** HP BLOCKS BOTTOM **/
+.hp-line4 .item-0 {
+  width:34.375%;
+}
+
+.hp-line4 .item-1 {
+  width:27.8125%;
+}
+
+.hp-line4 .item-2 {
+  float: right;
+  width:29.583%;
+} 
+
+#hp-line5 #hp-lemonderss{
+	width:34.375%;
+}
+
+#hp-book-media .item-header-image img{
+  width: auto;
+  float: right;
+}
+
+
+/****SOCIAL BAR****/
+.hp-social .hp-social-facebook, 
+.hp-social .hp-social-twitter, 
+.hp-social .hp-social-youtube {
+    margin-right:3%;
+}
+
+.hp-social .hp-social-label{
+	margin-top:21px;
+}
+
+.hp-social-facebook a{
+  background: url(/web/20210702033215im_/https://www.centenaire.org/sites/all/themes/centenaire/images/fb-bg_btn.png) no-repeat scroll 9% center rgba(0, 0, 0, 0.2);
+    display: block;
+    padding: 6.04% 10% 6.04% 20%;
+    width: 70%;
+}
+
+.hp-social-facebook a:hover{
+  background:url(/web/20210702033215im_/https://www.centenaire.org/sites/all/themes/centenaire/images/fb-bg_btn_white.png) no-repeat 9% center rgba(98, 122, 171, 0.2);
+}
+
+.hp-social-twitter a{
+    padding:6.04% 10% 6.04% 22%;
+    width: 68%;
+    background:url(/web/20210702033215im_/https://www.centenaire.org/sites/all/themes/centenaire/images/twitter-bg_btn.png) no-repeat 9% center rgba(0, 0, 0, 0.2);
+}
+
+.hp-social-twitter a:hover{
+    background:url(/web/20210702033215im_/https://www.centenaire.org/sites/all/themes/centenaire/images/twitter-bg_btn_white.png) no-repeat 9% center rgba(12, 170, 230, 0.2);
+}
+
+.hp-social-youtube a{
+    padding:6.04% 10% 6.04% 22%; 
+    width: 68%;
+    background:url(/web/20210702033215im_/https://www.centenaire.org/sites/all/themes/centenaire/images/yt-bg_btn.png) no-repeat 9% center rgba(0, 0, 0, 0.2);
+}
+.hp-social-youtube a:hover{
+    background:url(/web/20210702033215im_/https://www.centenaire.org/sites/all/themes/centenaire/images/yt-bg_btn_white.png) no-repeat 9% center rgba(207, 51, 45, 0.2);
+}   
+
+/****Vivre le centenaire****/
+.hp-vlc .hp-video-une{
+  width: 65%;
+}
+
+.hp-vlc .hp-vlc-nodes{
+  margin-top: 41px;
+  width: 32%;
+}
+/*
+     FILE ARCHIVED ON 03:32:15 Jul 02, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 11:15:51 Jun 08, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 546.551
+  exclusion.robots: 0.074
+  exclusion.robots.policy: 0.067
+  cdx.remote: 0.055
+  esindex: 0.01
+  LoadShardBlock: 521.599 (3)
+  PetaboxLoader3.datanode: 566.916 (5)
+  CDXLines.iter: 13.394 (3)
+  load_resource: 208.729 (2)
+  PetaboxLoader3.resolve: 121.043 (2)
+*/

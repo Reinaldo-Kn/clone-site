@@ -1,0 +1,36 @@
+a.reset-agenda-date {
+	font-size:12px;
+	color:#303639;
+	margin:10px auto 0;
+	text-decoration:underline;
+	display:none;
+}
+a.reset-agenda-date:link, 
+a.reset-agenda-date:visited {
+	color:#303639;
+	text-decoration:underline;
+}
+a.reset-agenda-date.show {
+	display:table;
+}
+/*
+     FILE ARCHIVED ON 03:32:14 Jul 02, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 10:44:39 Jun 08, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 1595.047
+  exclusion.robots: 0.097
+  exclusion.robots.policy: 0.089
+  cdx.remote: 0.069
+  esindex: 0.01
+  LoadShardBlock: 27.372 (3)
+  PetaboxLoader3.datanode: 39.382 (4)
+  CDXLines.iter: 21.696 (3)
+  load_resource: 43.456
+  PetaboxLoader3.resolve: 28.562
+*/

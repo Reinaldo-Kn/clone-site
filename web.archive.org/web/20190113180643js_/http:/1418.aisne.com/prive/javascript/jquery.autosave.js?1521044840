@@ -1,0 +1,92 @@
+var _____WB$wombat$assign$function_____ = function(name) {return (self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };
+if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; return this; } }
+{
+  let window = _____WB$wombat$assign$function_____("window");
+  let self = _____WB$wombat$assign$function_____("self");
+  let document = _____WB$wombat$assign$function_____("document");
+  let location = _____WB$wombat$assign$function_____("location");
+  let top = _____WB$wombat$assign$function_____("top");
+  let parent = _____WB$wombat$assign$function_____("parent");
+  let frames = _____WB$wombat$assign$function_____("frames");
+  let opener = _____WB$wombat$assign$function_____("opener");
+
+/**
+ * autosave plugin
+ *
+ * Copyright (c) 2009-2016 Fil (fil@rezo.net)
+ * Dual licensed under the MIT and GPL licenses:
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ */
+
+/*
+ * Usage: $("form").autosave({options...});
+ * to use with SPIP's action/session.php
+ */
+
+(function($){
+	$.fn.autosave = function(opt) {
+		opt = $.extend({
+			url: window.location,
+			confirm: false,
+			confirmstring: 'Sauvegarder ?'
+		},opt);
+		var save_changed = function(){
+			$('form.autosavechanged')
+			.each(function(){
+				if (!opt.confirm || confirm(opt.confirmstring)) {
+					var contenu = $(this).serialize();
+					// ajoutons un timestamp
+					var d=new Date();
+					contenu = contenu + "&__timestamp=" + Math.round(d.getTime()/1000);
+					$.post(opt.url, {
+						'action': 'session',
+						'var': 'autosave_' + $('input[name=autosave]', this).val(),
+						'val': contenu
+					});
+				}
+			}).removeClass('autosavechanged');
+		}
+		$(window).on('unload', save_changed);
+		return this
+			.on('keyup', function() {
+				$(this).addClass('autosavechanged');
+			})
+			.on('change', function() {
+				$(this).addClass('autosavechanged');
+				save_changed();
+			})
+			.on('submit',function() {
+				save_changed();
+				/* trop agressif : exemple du submit previsu forum, ou des submit suivant/precedent d'un cvt multipage
+				on sauvegarde toujours, et le serveur videra quand il faudra */
+				/*$(this).removeClass('autosavechanged')*/;
+			});
+	}
+})(jQuery);
+
+
+
+}
+/*
+     FILE ARCHIVED ON 13:09:44 May 15, 2018 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 06:37:52 Jun 08, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 85.845
+  exclusion.robots: 0.115
+  exclusion.robots.policy: 0.107
+  cdx.remote: 0.069
+  esindex: 0.011
+  LoadShardBlock: 51.426 (3)
+  PetaboxLoader3.datanode: 62.81 (4)
+  CDXLines.iter: 15.566 (3)
+  load_resource: 92.007
+  PetaboxLoader3.resolve: 47.306
+*/

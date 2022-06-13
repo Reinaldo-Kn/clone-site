@@ -1,0 +1,57 @@
+.print-link {
+  /* Use these for links above the content */
+  display: block;
+  text-align: right;
+  padding-bottom: 0.5em;
+  /* Use these for links in a corner of the content */
+  /*
+  position: relative;
+  bottom: 0.5em;
+  float: right;
+  */
+}
+
+div#block-print-ui-print-links span {
+  display: block;
+}
+
+.print_html,
+.print_mail,
+.print_pdf,
+.print_epub {
+  margin-left: 1em;
+}
+
+.print-syslink {
+  margin-right: 1em;
+}
+
+img.print-icon {
+  vertical-align: middle;
+}
+
+img.print-icon-margin {
+  padding-right: 4px;
+}
+
+/*
+     FILE ARCHIVED ON 10:10:39 Feb 01, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 07:44:15 Jun 08, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 73.99
+  exclusion.robots: 0.086
+  exclusion.robots.policy: 0.079
+  RedisCDXSource: 0.601
+  esindex: 0.007
+  LoadShardBlock: 49.533 (3)
+  PetaboxLoader3.datanode: 125.956 (5)
+  CDXLines.iter: 20.907 (3)
+  load_resource: 929.905 (2)
+  PetaboxLoader3.resolve: 800.304 (2)
+*/

@@ -1,0 +1,64 @@
+.views-exposed-form .views-exposed-widget {
+  float: left; /* LTR */
+  padding: .5em 1em 0 0; /* LTR */
+}
+
+.views-exposed-form .views-exposed-widget .form-submit {
+  margin-top: 1.6em;
+}
+
+.views-exposed-form .form-item,
+.views-exposed-form .form-submit {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.views-exposed-form label {
+  font-weight: bold;
+}
+
+.views-exposed-widgets {
+  margin-bottom: .5em;
+}
+
+/* table style column align */
+.views-align-left {
+  text-align: left;
+}
+.views-align-right {
+  text-align: right;
+}
+.views-align-center {
+  text-align: center;
+}
+
+/* Remove the border on tbody that system puts in */
+.views-view-grid tbody {
+  border-top: none;
+}
+
+.view .progress-disabled {
+  float: none;
+}
+
+/*
+     FILE ARCHIVED ON 14:34:45 Mar 23, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 07:33:09 Jun 08, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 174.895
+  exclusion.robots: 0.077
+  exclusion.robots.policy: 0.066
+  RedisCDXSource: 0.914
+  esindex: 0.005
+  LoadShardBlock: 151.505 (3)
+  PetaboxLoader3.datanode: 184.56 (4)
+  CDXLines.iter: 14.197 (3)
+  load_resource: 118.39
+  PetaboxLoader3.resolve: 62.403
+*/

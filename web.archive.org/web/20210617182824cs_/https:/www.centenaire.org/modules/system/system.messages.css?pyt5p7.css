@@ -1,0 +1,85 @@
+
+/**
+ * @file
+ * Styles for system messages.
+ */
+
+div.messages {
+  background-position: 8px 8px; /* LTR */
+  background-repeat: no-repeat;
+  border: 1px solid;
+  margin: 6px 0;
+  padding: 10px 10px 10px 50px; /* LTR */
+}
+
+div.status {
+  background-image: url(/web/20210621030820im_/https://www.centenaire.org/misc/message-24-ok.png);
+  border-color: #be7;
+}
+div.status,
+.ok {
+  color: #234600;
+}
+div.status,
+table tr.ok {
+  background-color: #f8fff0;
+}
+
+div.warning {
+  background-image: url(/web/20210621030820im_/https://www.centenaire.org/misc/message-24-warning.png);
+  border-color: #ed5;
+}
+div.warning,
+.warning {
+  color: #840;
+}
+div.warning,
+table tr.warning {
+  background-color: #fffce5;
+}
+
+div.error {
+  background-image: url(/web/20210621030820im_/https://www.centenaire.org/misc/message-24-error.png);
+  border-color: #ed541d;
+}
+div.error,
+.error {
+  color: #8c2e0b;
+}
+div.error,
+table tr.error {
+  background-color: #fef5f1;
+}
+div.error p.error {
+  color: #333;
+}
+
+div.messages ul {
+  margin: 0 0 0 1em; /* LTR */
+  padding: 0;
+}
+div.messages ul li {
+  list-style-image: none;
+}
+
+/*
+     FILE ARCHIVED ON 03:08:20 Jun 21, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 07:24:47 Jun 08, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 59.084
+  exclusion.robots: 0.103
+  exclusion.robots.policy: 0.096
+  RedisCDXSource: 0.438
+  esindex: 0.006
+  LoadShardBlock: 44.287 (3)
+  PetaboxLoader3.datanode: 102.024 (4)
+  CDXLines.iter: 11.995 (3)
+  load_resource: 98.204
+  PetaboxLoader3.resolve: 29.271
+*/

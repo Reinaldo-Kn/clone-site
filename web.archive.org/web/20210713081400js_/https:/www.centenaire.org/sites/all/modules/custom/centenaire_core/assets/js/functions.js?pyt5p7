@@ -1,0 +1,2470 @@
+var _____WB$wombat$assign$function_____ = function(name) {return (self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };
+if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; return this; } }
+{
+  let window = _____WB$wombat$assign$function_____("window");
+  let self = _____WB$wombat$assign$function_____("self");
+  let document = _____WB$wombat$assign$function_____("document");
+  let location = _____WB$wombat$assign$function_____("location");
+  let top = _____WB$wombat$assign$function_____("top");
+  let parent = _____WB$wombat$assign$function_____("parent");
+  let frames = _____WB$wombat$assign$function_____("frames");
+  let opener = _____WB$wombat$assign$function_____("opener");
+
+
+function protect(mode){
+  /* SECURE - NO RIGHT CLICK AND OTHERS */
+  var message="Function Disabled!"; function clickIE4(){ if (event.button==2){ alert(message); return false; } } function clickNS4(e){ if (document.layers||document.getElementById&&!document.all){ if (e.which==2||e.which==3){ alert(message); return false; } } } if (document.layers){ document.captureEvents(Event.MOUSEDOWN); document.onmousedown=clickNS4; } else if (document.all&&!document.getElementById){ document.onmousedown=clickIE4; }
+  if(mode=='all'){
+    document.oncontextmenu = function(){return false;}
+    document.ondragstart = function(){return false;}
+    document.onselectstart = function(){return false;}
+  }
+  if(mode=='img'){
+    for(i=0;i<document.images.length;i++){
+      document.images[i].oncontextmenu = function(){return false;}
+      document.images[i].ondragstart = function(){return false;}
+      document.images[i].onselectstart = function(){return false;}
+    }
+  }
+  /* END SECURE - NO RIGHT CLICK AND OTHERS */
+}
+
+/* Fix sizes (HP slider) */
+function fixHpSlidesSizes(){
+  if($("body.front") && $("#hp-slide-article")){
+
+    var widthRef = $("#hp-slide-article").width();
+    var heightRef = $("#hp-slide-article .items .item-0").height();
+    var hpSlidesFinalw = ($("#hp-slide-article .items .item").length) * widthRef;
+    var hpPosLeftItems = ($("#hp-slide-article .items .item.current").index() * widthRef) - 1;
+    //$("#hp-slide-article .items .item").width(widthRef);
+    //alert($("#hp-slide-article .item").length);
+    //$('#hp-slide-article .items').width(hpSlidesFinalw).height(heightRef).css("left", "-"+hpPosLeftItems+"px");
+
+    /*
+    var real_nb_items = $('#hp-slide-article .item').length / 2;
+    var nb_less = 1;
+    $('#hp-slide-article .item').each(function( index ) {
+      var slide_width = $('#hp-slide-article').width();
+      var left_value = '';
+      if(index < real_nb_items) {
+        $(this).css('left', index * slide_width + 'px');
+      }
+      else if (index == real_nb_items) {
+        left_value = index * slide_width;
+        $(this).css('left', '-' + left_value + 'px');
+      }
+      else {
+        left_value = (real_nb_items - nb_less) * slide_width;
+        $(this).css('left', '-' + left_value + 'px');
+        nb_less = nb_less + 1;
+      }
+    });
+    */
+    $('#hp-slide-article .items').width(hpSlidesFinalw).height(heightRef);
+  }
+}
+
+/* Fix sizes (diaporamas) */
+function fixDiapoItemSizes(){
+  var respimgw = $("#full-media-diapo").width(); // on recup la taille du content car width de l'image rest native (pour le DOM)
+  var finalw = $("#full-media-diapo.scrollable .items .item").length * respimgw;
+  var posLeftItems = ($(".scrollable .items .item.current").index() * respimgw) - 1;
+  $("#full-media-diapo.scrollable .items").width(finalw).css("left", "-"+posLeftItems+"px");
+  $("#full-media-diapo.scrollable .items .item, #full-media-diapo .article-illustration").width(respimgw);
+  var posTopBtns = ($("#full-media-diapo .article-illustration img[typeof=\"foaf:Image\"]").height() / 2) - 50;
+  if( $("body").hasClass("node-type-media") && posTopBtns== -50){
+    setTimeout("fixDiapoItemSizes();", 500);
+  }else{
+    $("#full-media-diapo a.browse").css("top", posTopBtns+"px");
+  }
+  fixIframeHeight();
+}
+
+/* Ponctuation */
+function ponctuation(text){
+  var finaltext = '';
+  if(text != ''){
+    var filteredstring = text;
+    //alert(filteredstring);
+    var partstoreplace = new Array(" !"," ;"," :","« "," »","&laquo; "," &raquo;");
+    var newsparts = new Array("&nbsp;!","&nbsp;;","&nbsp;:","«&nbsp;","&nbsp;»","&laquo;&nbsp;","&nbsp;&raquo;");
+    //var newsparts = new Array("8!","8;","8:");
+    for(var i=0; i<partstoreplace.length-1; i++){
+      //alert(filteredstring.indexOf(partstoreplace[i]));
+      if(filteredstring.indexOf(partstoreplace[i]) != -1){
+        filteredstring = filteredstring.replace(new RegExp(partstoreplace[i], 'g'), newsparts[i]);
+      }
+    }
+    filteredstring = filteredstring.replace(' ?', '&nbsp;?');
+    finaltext = filteredstring;
+  }
+  return finaltext;
+}
+
+jQuery(document).ready(function($){
+console.log("new version");
+// AFFICHAGE BARRE RECHERCHE SUR TABLETTE ET DESKTOP
+    $('li.hm-loupe').click(function () {
+      var $this = $(this);
+        //var window_size = $( window ).width();
+        /*if (window_size > 958) {
+            $('#block-centenaire-megamenu-megamenu-normal').fadeToggle();
+        }
+        if (window_size > 719 && window_size < 959) {
+            $('#block-centenaire-megamenu-megamenu-tablet').fadeToggle();
+        }
+        if (window_size < 720) {
+            $('#block-centenaire-megamenu-megamenu-mobile').fadeToggle();
+        }
+        $('#block-centenaire-search-custom-search-autocomplete').fadeToggle();*/
+        if(window.innerWidth > 719) {
+          if(!$('#zone-megamenu-wrapper').hasClass('search-active')) {
+            $('#zone-megamenu-wrapper').addClass('search-active');
+          }
+          else {
+            $('#zone-megamenu-wrapper').removeClass('search-active');
+          }
+          if(!$this.hasClass('active')) {
+            $this.addClass('active');
+          }
+          else {
+              $this.removeClass('active');
+          }
+        }
+        else {
+          $("#customs-search-autocomplete-form").submit();
+        }
+    });
+    $('.search-close').click(function() {
+      //if(window.innerWidth > 719) {
+        if($('body').hasClass('page-custom-search')) {
+            $('#zone-megamenu-wrapper').addClass('search-active');
+        }
+        else {
+            $('#zone-megamenu-wrapper').removeClass('search-active');
+        }
+      //}
+      $('li.hm-loupe').removeClass('active');
+    });
+    function hideSearch() {
+        /*if ($('#block-centenaire-search-custom-search-autocomplete').css('display') != "none") {
+            var window_size = $( window ).width();
+            if (window_size > 958) {
+                $('#block-centenaire-megamenu-megamenu-normal').fadeToggle();
+            }
+            if (window_size > 719 && window_size < 959) {
+                $('#block-centenaire-megamenu-megamenu-tablet').fadeToggle();
+            }
+            if (window_size < 720) {
+                $('#block-centenaire-megamenu-megamenu-mobile').fadeToggle();
+            }
+            $('#block-centenaire-search-custom-search-autocomplete').fadeToggle();
+            $('li.hm-loupe').toggleClass('active');
+        }*/
+        /*if(!$('#zone-megamenu-wrapper').hasClass('search-active')) {
+          $('#zone-megamenu-wrapper').addClass('search-active');
+          $this.addClass('active');
+        }
+        else {
+          $('#zone-megamenu-wrapper').removeClass('search-active');
+          $this.removeClass('active');
+        }*/
+        if($('body').hasClass('page-custom-search')) {
+          $('li.hm-loupe').addClass('active');
+        }
+    }
+    $('#customs-search-autocomplete-form .form-item-skeys').click(hideSearch());
+    $( "#customs-search-autocomplete-form .form-item-skeys" ).keypress(function(e) {
+      if(e.which == 13) {
+        $("#customs-search-autocomplete-form").submit();
+      }
+    });
+    $( window ).resize(hideSearch());
+
+    $('#search-filters .filters-rub li, #search-filters .filters-type li').each(function(i) {
+      if($(this).hasClass('active')) {
+        $('#search-filters .filters-rub li, #search-filters .filters-type li').addClass('no-selected');
+        $(this).removeClass('no-selected');
+      }
+    });
+
+    $('.form-item.form-type-textfield.form-item-skeys').prepend('<div class="overlay-autocomplete"></div>');
+
+    $('#edit-skeys').keydown(function() {
+      //if($('#autocomplete').length > 0) {
+        $('.form-item.form-type-textfield.form-item-skeys').addClass('on-search');
+        $('.overlay-autocomplete').height($('#autocomplete').height());
+      //}
+
+    });
+
+    $(document).click(function() {
+      if($('.form-item.form-type-textfield.form-item-skeys').length > 0) {
+        $('.form-item.form-type-textfield.form-item-skeys').removeClass('on-search');
+      }
+    });
+
+
+    /** Filtrage mobile **/
+    $('.filter-cat-label').click(function() {
+      $('#search-filters').removeClass('on-filter-by');
+      if(!$('#search-filters').hasClass('on-filter-cat')) {
+        $('#search-filters').addClass('on-filter-cat');
+      }
+      else {
+        $('#search-filters').removeClass('on-filter-cat');
+      }
+    });
+    $('.filter-by-label').click(function() {
+      $('#search-filters').removeClass('on-filter-cat');
+      if(!$('#search-filters').hasClass('on-filter-by')) {
+        $('#search-filters').addClass('on-filter-by');
+      }
+      else {
+        $('#search-filters').removeClass('on-filter-by');
+      }
+    });
+
+    $('.ct-filter-by-mobile li a').click(function() {
+      $(this).parent().siblings('li').removeClass('active').addClass('inactive');
+      $(this).parent().removeClass('inactive').addClass('active');
+    });
+
+    $('.btn-filters-validate').click(function(e) {
+      e.preventDefault();
+      $('#search-filters').removeClass('on-filter-cat');
+      $('#search-filters').removeClass('on-filter-by');
+    });
+
+    if($('.no-results-subtitle').length) {
+      $('#search-filters').hide();
+    }
+
+
+// JAVASCRIPT MEDIA QUERIES FOR AGENDA SIDEBAR
+enquire.register("screen and (max-width: 720px)", {
+    match : function() {
+
+        $("#block-centenaire-event-agenda-tri-zone h2").addClass('active');
+
+        $("#block-centenaire-event-agenda-tri-zone h2").click(function(){
+            if(!$(this).hasClass('active')){
+              $(this).addClass('active');
+              $(".agenda-tri-pays").show();
+
+              if($("#optionWorld > a").hasClass("active"))
+                $("#block-centenaire-event-agenda-tri-countries").show();
+              else
+                $("#block-centenaire-event-agenda-tri-region").show();
+
+            }
+            else{
+              $(this).removeClass('active');
+              $(".agenda-tri-pays").hide();
+              $("#block-centenaire-event-agenda-tri-countries").hide();
+              $("#block-centenaire-event-agenda-tri-region").hide();
+            }
+        })
+
+        if($.urlParam('date') != ''){
+          $("#block-centenaire-event-agenda-tri-date h2").addClass('active');
+          $(".agenda-tri-date").show();
+        }
+
+        var regionParam = $.urlParam('region');
+        var dateParam = $.urlParam('date');
+        var countriesParam = $.urlParam('countries');
+
+        if(!regionParam && !dateParam && !countriesParam)
+            $(".initRecherche").hide();
+
+
+        $("#block-centenaire-event-agenda-tri-date h2").click(function(){
+            if(!$(this).hasClass('active')){
+              $(this).addClass('active');
+              $(".agenda-tri-date").show();
+            }
+            else{
+              $(this).removeClass('active');
+              $(".agenda-tri-date").hide();
+            }
+        })
+    },
+    unmatch : function() {
+        // Hide the sidebar
+    }
+});
+
+      /* HEADER SEARCH FIELD BEHAVIOUR
+  *************************************/
+  /*
+  var searchFrValue = "Rechercher un contenu";
+  var searchEnValue = "Search contents";
+  var searchDeValue = "Suchen";
+  var searchItValue = "Cerca";
+  var searchNlValue = "Zoeken";
+  var searchEsValue = "Buscar";
+
+  if (lng_prefix === "fr")
+    $("#edit-keys").val(searchFrValue);
+  else if(lng_prefix === "de")
+    $("#edit-keys").val(searchDeValue);
+  else if(lng_prefix === "it")
+    $("#edit-keys").val(searchItValue);
+  else if(lng_prefix === "nl")
+    $("#edit-keys").val(searchNlValue);
+  else if(lng_prefix === "es")
+    $("#edit-keys").val(searchEsValue);
+  else
+    $("#edit-keys").val(searchEnValue);
+
+
+  $("#edit-keys").focus(function(){
+    if(this.value == searchFrValue || this.value == searchEnValue || this.value == searchDeValue || this.value == searchItValue || this.value == searchNlValue || this.value == searchEsValue )
+      this.value = '';
+  });
+  */
+
+  $('.megamenu-block ul.niv1 li.niv1').click(function() {
+      var linkObject = $(this).find('a');
+      var linkUrl = $(linkObject).attr("href");
+      document.location.href = linkUrl;
+  });
+
+  $('body').on('click','.nshare.facebook',function(event) {
+    var width  = 575,
+        height = 400,
+        left   = ($(window).width()  - width)  / 2,
+        top    = ($(window).height() - height) / 2,
+        url    = this.href,
+        opts   = 'status=1' +
+                 ',width='  + width  +
+                 ',height=' + height +
+                 ',top='    + top    +
+                 ',left='   + left;
+
+    window.open(url, 'twitter', opts);
+
+    return false;
+  });
+
+  $('body').on('click','.nshare.twitter', function(event) {
+    var width  = 575,
+        height = 400,
+        left   = ($(window).width()  - width)  / 2,
+        top    = ($(window).height() - height) / 2,
+        url    = this.href,
+        opts   = 'status=1' +
+                 ',width='  + width  +
+                 ',height=' + height +
+                 ',top='    + top    +
+                 ',left='   + left;
+
+    window.open(url, 'twitter', opts);
+
+    return false;
+  });
+
+  $('body').on('click','.nshare.google', function(event) {
+    var width  = 800,
+        height = 400,
+        left   = ($(window).width()  - width)  / 2,
+        top    = ($(window).height() - height) / 2,
+        url    = this.href,
+        opts   = 'status=1' +
+                 ',width='  + width  +
+                 ',height=' + height +
+                 ',top='    + top    +
+                 ',left='   + left;
+
+    window.open(url, 'twitter', opts);
+
+    return false;
+  });
+
+  $('body').on('click','.nshare.linkedin', function(event) {
+    var width  = 600,
+        height = 500,
+        left   = ($(window).width()  - width)  / 2,
+        top    = ($(window).height() - height) / 2,
+        url    = this.href,
+        opts   = 'status=1' +
+                 ',width='  + width  +
+                 ',height=' + height +
+                 ',top='    + top    +
+                 ',left='   + left;
+
+    window.open(url, 'twitter', opts);
+
+    return false;
+  });
+
+  $('body').on('click','.nshare.pinterest', function(event) {
+    var width  = 570,
+        height = 500,
+        left   = ($(window).width()  - width)  / 2,
+        top    = ($(window).height() - height) / 2,
+        url    = this.href,
+        opts   = 'status=1' +
+                 ',width='  + width  +
+                 ',height=' + height +
+                 ',top='    + top    +
+                 ',left='   + left;
+
+    window.open(url, 'twitter', opts);
+
+    return false;
+  });
+
+  $('body').on('click','.nshare.viadeo', function(event) {
+    var width  = 850,
+        height = 500,
+        left   = ($(window).width()  - width)  / 2,
+        top    = ($(window).height() - height) / 2,
+        url    = this.href,
+        opts   = 'status=1' +
+                 ',width='  + width  +
+                 ',height=' + height +
+                 ',top='    + top    +
+                 ',left='   + left;
+
+    window.open(url, 'twitter', opts);
+
+    return false;
+  });
+
+   // Overlay send mail to a friend
+  PopMailOverlay();
+
+  $("#term-list-sticky .node-info").mouseenter(function(){
+    $(this).find('.node-sticky-text').fadeIn();
+    $(this).find('.icon-termsticky').fadeOut();
+  }).mouseleave(function(){
+    $(this).find('.node-sticky-text').fadeOut();
+    $(this).find('.icon-termsticky').fadeIn();
+  });
+
+  $(".node-homepage .hp-vlc-node-content").mouseenter(function(){
+    $(this).find('.hp-vlc-node-text').fadeIn();
+  }).mouseleave(function(){
+    $(this).find('.hp-vlc-node-text').fadeOut();
+  });
+  /*
+  $(".node-homepage .sidebar-links-item").mouseenter(function(){
+    $(this).find('.sidebar-links-text').fadeIn();
+  }).mouseleave(function(){
+    $(this).find('.sidebar-links-text').fadeOut();
+  });
+
+  */
+
+  /*$("#sidebar-subhierarchy li").mouseenter(function(){
+    $(this).children("ul.niv2").fadeIn();
+    var lastchar = $(this).children("a.niv1").html().substr(-1,1);
+    if(lastchar == '+') {
+      var newvalue = $(this).children("a.niv1").html().replace($(this).children("a.niv1").html().substr(-1,1), '-');
+      $(this).children("a.niv1").html(newvalue);
+    }
+  }).mouseleave(function(){
+    $(this).children("ul.niv2").fadeOut();
+    var lastchar = $(this).children("a.niv1").html().substr(-1,1);
+    if(lastchar == '-') {
+      var newvalue = $(this).children("a.niv1").html().replace($(this).children("a.niv1").html().substr(-1,1), '+');
+      $(this).children("a.niv1").html(newvalue);
+    }
+  });*/
+
+  $("#sidebar-subhierarchy .have a.niv1").click(function(){
+    if ($(this).next(".niv2:visible").length != 0){
+      $(this).next(".niv2").slideUp("normal", function(){$(this).parent().removeClass("open")});
+    }
+    else {
+      $(this).next(".niv2").slideDown("normal", function () { $(this).parent().addClass("open")});
+    }
+    return false;
+  });
+
+  $('.context-dans-le-monde #sidebar-subhierarchy .item-0.have, .context-tresors-darchives #sidebar-subhierarchy .item-0.have, .context-espace-scientifique #sidebar-subhierarchy .item-0.have').find('ul').css('display', 'block').parent().addClass("open");
+  $("#sidebar-subhierarchy a.current").parent().parent("ul").show();
+
+  /* Fix affichage scald au DND dans un WYSIWYG
+   * /scald/modules/library/dnd/js/dnd-library.js
+   *
+   */
+  /*
+  Drupal.theme.prototype.scaldEmbed = function(atom) {
+    var output = atom.editor;
+    return output;
+  }
+  */
+
+  $('a#edito-link').append('<span></span>');
+  $('.hp-line2 .last-article-content.nano').height($('.hp-line2 .hp-video-une .hp-video-content').outerHeight() - 20);
+
+  /* One link only per block (SEO) */
+  $('.block-hp-facebook, .hp-archive-une .archive-content').addClass('onelinkonly');
+
+  $(".onelinkonly").click(function(){
+
+    if($(this).find("a").attr('target') == '_blank') {
+      //window.location=$(this).find("a").attr("href");
+      window.open($(this).find("a").attr("href"), "_blank");
+    }
+    else {
+      window.location=$(this).find("a").attr("href");
+    }
+    return false;
+  });
+
+  $("#edit-submitted-form-contact-type").selectbox();
+
+  if($("body.not-logged-in").length ){
+    //protect('img');
+    protect('all');
+  }
+
+   $('h1 a, h2 a, h3 a, h4 a, h1, h2, h3, h4, .title a, .article-title a, .easy-breadcrumb a, .flex-caption a').each(function(){
+    $(this).html( ponctuation( $(this).html() ) );
+  });
+
+  $(".nano").nanoScroller();
+
+  //Home diaporama
+  /*
+  $(".mini-slide li img").click(function(){
+  var slide_title = $(this).attr('title');
+  var slide_alt = $(this).attr('alt');
+  var slide_src = $(this).attr('src');
+  $(".big-slide img:first-child").attr({title: slide_title, alt: slide_alt, src: slide_src});
+  });
+
+  $(".big-slide .launch-diaporama").click(function(){
+    $(this).fadeOut(1000);
+    var attributes = new Array(2);
+    attributes[0] = new Array();
+    attributes[1] = new Array();
+    attributes[2] = new Array();
+
+    for(i=0; i<7; i++){
+
+      attributes[0][i] = $('.mini-slide li').eq(i).children('img').attr('title');
+      attributes[1][i] = $('.mini-slide li').eq(i).children('img').attr('alt');
+      attributes[2][i] = $('.mini-slide li').eq(i).children('img').attr('src');
+
+    }
+
+    j = 0;
+    function animation_loop() {
+      setTimeout(function() { j++; if (j < 7) { animation_loop(); } }, 3000);
+      $(".big-slide img:first-child").attr({title: attributes[0][j], alt: attributes[1][j], src: attributes[2][j]});
+    };
+    animation_loop();
+
+  });
+  */
+
+
+
+  var real_nb_items = $('#hp-slide-article .item').length / 2;
+  var nb_less = 1;
+  $('#hp-slide-article .item').each(function( index ) {
+    var slide_width = $('#hp-slide-article').width();
+    var left_value = '';
+    if(index < real_nb_items) {
+      $(this).css('left', index * slide_width + 'px');
+    }
+    else if (index == real_nb_items) {
+      left_value = index * slide_width;
+      $(this).css('left', '-' + left_value + 'px');
+    }
+    else {
+      left_value = (real_nb_items - nb_less) * slide_width;
+      $(this).css('left', '-' + left_value + 'px');
+      nb_less = nb_less + 1;
+    }
+  });
+
+  var initalWidth = $('#hp-slide-article #hp-slide-article-container .item-0 img').width();
+
+
+
+ $.fn.isAfter = function(sel) {
+    return this.prevAll(sel).length !== 0;
+}
+$.fn.isBefore = function(sel) {
+    return this.nextAll(sel).length !== 0;
+}
+
+
+  //Resize slider container according to image size
+  $(window).resize(function() {
+
+   var height = $('#hp-slide-article-container .item-0 img').height();
+   //alert(height);
+    $('#hp-slide-article').css('height', height + 'px');
+
+   /*
+  var widthDiff = initalWidth - $('#hp-slide-article #hp-slide-article-container .item-0 img').width();
+
+
+  $('#hp-slide-article-container').children().each(function(){
+
+    if(!($(this).hasClass('current')))
+    {
+      var elLeftPosition = $(this).position().left;
+      var currentLeftPosition = $('#hp-slide-article #hp-slide-article-container .current').position().left
+      var lastChild = ($(this)).is(':last-child');
+      var firstChild = ($(this)).is(':first-child');
+
+
+        if(elLeftPosition > currentLeftPosition)
+        {
+          $(this).css('left', $(this).position().left - widthDiff);
+
+        }
+        else if(elLeftPosition < currentLeftPosition)
+        {
+          $(this).css('left', $(this).position().left + widthDiff);
+        }
+
+      }
+  });
+
+
+
+    initalWidth=$('#hp-slide-article #hp-slide-article-container .item-0 img').width();
+    */
+
+    if(this.resizeTO) clearTimeout(this.resizeTO);
+
+    /* Pendant le resize on n'impose plus la width pour rendre temporairement fluid */
+    $(".scrollable .items").css("width", "auto");
+
+    this.resizeTO = setTimeout(function() {
+      $(this).trigger('resizeEnd');
+    }, 500);
+
+  });
+
+  $(window).bind('resizeEnd', function() {
+    fixHpSlidesSizes();
+    fixDiapoItemSizes();
+  });
+
+  var max_img_height = 0;
+
+  fixDiapoItemSizes();
+
+});
+
+function fixIframeHeight()  {
+  var iframe_width = $("iframe.fluid-iframe").width();
+  var iframe_height = (iframe_width / 16) * 9;
+
+  $("iframe.fluid-iframe").css("height", iframe_height);
+}
+
+function getQueryVariable(variable) {
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return('');
+}
+
+/*
+ *  SVG
+*/
+$(document).ready(function() {
+
+  $('body').on('mouseenter', ".theme-links-wrapper", function() {
+    $(this).find('ul.theme-links').show();
+  }).on('mouseleave', ".theme-links-wrapper", function() {
+    $(this).find('ul.theme-links').hide();
+  });
+
+  /* FIRE MEGAMENU WIDE CONFIG */
+  $("#megamenu .block-subnav").css({'opacity':'0'}); //Fade sub nav to 0 opacity on default
+  $("#megamenu ul.niv1 li.niv1").hoverIntent(config); //Trigger Hover intent with custom configurations
+
+  $(".megamenu-v2 .megamenu-block").hoverIntent(configEN); //Trigger Hover intent with custom configurations
+
+  /* FIRE MEGAMENU TABLET CONFIG */
+  //$("#megamenu-tablet .megamenu-block ul").css({'opacity':'0'}); //Fade sub nav to 0 opacity on default
+  $("#megamenu-tablet .megamenu-block").hoverIntent(configTablet); //Trigger Hover intent with custom configurations
+
+
+
+  if (!$('body').hasClass("node-type-external-template")) {
+    //Preload filter image for smooth display effect (FIREFOX ONLY)
+    var img = new Image();
+    img.src = '/sites/all/modules/custom/centenaire_taxonomy/assets/images/filters.svg#grayscale';
+  }
+
+// EVENT EXPAND BEHAVIOUR
+$(".event-row").click(function(){
+  var jObject = $(this).find(".event-content");
+  var jObject2 = $(this).find(".event-more-content");
+
+  if(!$(jObject).hasClass("expanded")){
+    $(jObject).addClass("expanded");
+    $(jObject2).show().addClass('animated fadeInDown');
+      $(this).find(".event-expand-link a").replaceWith('<a>Réduire<span></span></a>');
+    setTimeout(function(){
+      $(jObject2).css('opacity', 1);
+      $(jObject2).removeClass('animated fadeInDown');
+    },800)
+  }
+  else{
+    $(jObject2).addClass('animated fadeOutUp');
+    $(this).find(".event-expand-link a").replaceWith('<a>En savoir plus<span></span></a>');
+    setTimeout(function(){
+      $(jObject2).css('opacity', 0);
+      $(jObject2).hide();
+      $(jObject2).removeClass('animated fadeOutUp');
+      $(jObject).removeClass("expanded");
+
+    },800)
+  }
+});
+$('.agenda-node-sicky.event-row').trigger('click');
+
+// AGENDA liens Pro
+/*
+  $('.main-event .event-row.collapsed .event-more-content').hide();
+  $('.main-event .event-row.collapsed').each(function(){
+    $(this).click(function(){
+      $(this).find('.event-more-content').slideDown('fast');
+      $(this).addClass('expanded').removeClass('collapsed');
+      $(this).find('.event-expand-link a').addClass('expanded').html(event_reduce_text+'<span></span>');
+
+      $('.event-expand-link a.expanded').click(function(){
+        $(this).parent().parent().find('.event-more-content').slideUp('fast');
+        $(this).parent().parent().parent().parent().addClass('collapsed').removeClass('expanded');
+        $(this).html(event_expand_text+'<span></span>').removeClass('expanded');
+        return false;
+      });
+
+    });
+  });
+*/
+
+
+  // AGENDA, COUNTRIES FILTER
+  if($("#optionFrance").length > 0){
+
+    if ($("#optionFrance > a").hasClass("active")){
+       $(".block-centenaire-event-agenda-tri-countries").hide();
+      $(".block-centenaire-event-agenda-tri-region").show();
+    }
+    else {
+      $(".block-centenaire-event-agenda-tri-countries").show();
+      $(".block-centenaire-event-agenda-tri-region").hide();
+    }
+
+  }
+
+
+});
+
+
+/*
+- *  FUNCTION DRAWING SVG MAP
+-*/
+
+
+function drawMap(data, mapContainer){
+  console.log(data);
+  var regions=[];
+  var regions_urls = [];
+
+  regions[0] = "Alsace";
+  regions[1] = "Aquitaine";
+  regions[2] = "Auvergne";
+  regions[3] = "BasseNormandie";
+  regions[4] = "Bourgogne";
+  regions[5] = "Bretagne";
+  regions[6] = "Centre";
+  regions[7] = "Corse";
+  regions[8] = "ChampagneArdenne";
+  regions[9] = "FrancheComte";
+  regions[10] = "HauteNormandie";
+  regions[11] = "IleDeFrance";
+  regions[12] = "LanguedocRoussillon";
+  regions[13] = "Limousin";
+  regions[14] = "Lorraine";
+  regions[15] = "MidiPyrenees";
+  regions[16] = "NordPasDeCalais";
+  regions[17] = "PACA";
+  regions[18] = "PaysDeLaLoire";
+  regions[19] = "Picardie";
+  regions[20] = "PoitouCharentes";
+  regions[21] = "RhoneAlpes";
+
+  regions_urls[0] = "alsace";
+  regions_urls[1] = "aquitaine";
+  regions_urls[2] = "auvergne";
+  regions_urls[3] = "basse-normandie";
+  regions_urls[4] = "bourgogne";
+  regions_urls[5] = "bretagne";
+  regions_urls[6] = "centre";
+  regions_urls[7] = "corse";
+  regions_urls[8] = "champagne-ardenne";
+  regions_urls[9] = "franche-comté";
+  regions_urls[10] = "haute-normandie";
+  regions_urls[11] = "ile-de-france";
+  regions_urls[12] = "languedoc-roussillon";
+  regions_urls[13] = "imousin";
+  regions_urls[14] = "lorraine";
+  regions_urls[15] = "midi-pyrénées";
+  regions_urls[16] = "nord-pas-ce-calais";
+  regions_urls[17] = "provence-alpes-cote-dazur";
+  regions_urls[18] = "pays-de-la-loire";
+  regions_urls[19] = "picardie";
+  regions_urls[20] = "poitou-charentes";
+  regions_urls[21] = "rhône-alpes";
+
+  var width = $('#'+mapContainer).width();
+  var height = $('#'+mapContainer).height() * 0.99;
+
+  var defaultColor="#d4d5d6";
+  var disabledColor="#dfdfdf";
+  var hoverColor="#88929c";
+
+  // important - we need the original SVG's width and height
+  var svgWidth = 279.31;
+  var svgHeight = 260;
+  //var svgWidth = 587.5;
+  //var svgHeight = 550;
+
+  var paper = new Raphael(mapContainer, '100%', '100%');
+
+  // the following line makes the Raphael paper fill its container
+  paper.setViewBox(0, 0, svgWidth, svgHeight, true);
+  paper.canvas.setAttribute('preserveAspectRatio', 'true');
+  paper.canvas.setAttribute('preserveAspectRatio', 'xMidYMin meet');
+
+  var currentRegionParam = window.location.pathname.substring(4);
+
+  var pathCount = data.length;
+  //Loop over all of the regions in the JSON file
+  for (i = 0; i < pathCount; i++) {
+
+    //STYLE ATTRIBUTES
+    var attr = {
+      stroke: "#9f9f9e",
+      "stroke-width": 1,
+      "stroke-linejoin": "round"
+    };
+
+    if(currentRegionParam == regions_urls[i]) {
+      attr.fill = hoverColor;
+    }
+    else {
+      attr.fill = defaultColor;
+
+        console.log(data[i]);
+      if(lng_prefix === "") { attr.href = data[i][2]; }
+      /*
+      else if (lng_prefix === "fr") { attr.href = "/fr/agenda?focusRegion="+data[i][2]; }
+      else if (lng_prefix === "en") { attr.href = "/en/agenda?focusRegion="+data[i][2]; }
+      else if(lng_prefix === "de") {attr.href = "/de/agenda?focusRegion="+data[i][2]; }
+      else if(lng_prefix === "nl") {attr.href = "/nl/agenda?focusRegion="+data[i][2]; }
+      else if(lng_prefix === "it") {vattr.href = "/es/agenda?focusRegion="+data[i][2]; }
+      else if(lng_prefix === "es") { attr.href = "/it/agenda?focusRegion="+data[i][2]; }
+      */
+      else if (lng_prefix === "fr") { attr.href = "/fr"+data[i][2]; }
+      else if (lng_prefix === "en") { attr.href = "/en"+data[i][2]; }
+      else if(lng_prefix === "de") {attr.href = "/de"+data[i][2]; }
+      else if(lng_prefix === "nl") {attr.href = "/nl"+data[i][2]; }
+      else if(lng_prefix === "it") {vattr.href = "/es"+data[i][2]; }
+      else if(lng_prefix === "es") { attr.href = "/it"+data[i][2]; }
+
+    }
+
+    attr.title = data[i][0];
+    //TRACE REGION
+    var thisPath = paper.path(data[i][3]).attr(attr);
+
+    //HOVER EFFECT
+    if(thisPath.attrs.fill != hoverColor){
+      thisPath.hover(
+        function(){ this.attr("fill", hoverColor); },
+        function() { this.attr("fill", defaultColor); }
+      );
+    }
+  }
+}
+
+
+/*
+ *  FUNCTION DRAWING SVG MAP
+*/
+function drawMap2(data, mapContainer){
+  var regions=[];
+  var regions_tids=[];
+
+  regions[0] = "Alsace";
+  regions[1] = "Aquitaine";
+  regions[2] = "Auvergne";
+  regions[3] = "BasseNormandie";
+  regions[4] = "Bourgogne";
+  regions[5] = "Bretagne";
+  regions[6] = "Centre";
+  regions[7] = "Corse";
+  regions[8] = "ChampagneArdenne";
+  regions[9] = "FrancheComte";
+  regions[10] = "HauteNormandie";
+  regions[11] = "IleDeFrance";
+  regions[12] = "LanguedocRoussillon";
+  regions[13] = "Limousin";
+  regions[14] = "Lorraine";
+  regions[15] = "MidiPyrenees";
+  regions[16] = "NordPasDeCalais";
+  regions[17] = "PACA";
+  regions[18] = "PaysDeLaLoire";
+  regions[19] = "Picardie";
+  regions[20] = "PoitouCharentes";
+  regions[21] = "RhoneAlpes";
+
+  regions_tids[0] = "Alsace";
+  regions_tids[1] = "Aquitaine";
+  regions_tids[2] = "Auvergne";
+  regions_tids[3] = "Basse-Normandie";
+  regions_tids[4] = "Bourgogne";
+  regions_tids[5] = "Bretagne";
+  regions_tids[6] = "Centre";
+  regions_tids[7] = "Corse";
+  regions_tids[8] = "Champagne-Ardenne";
+  regions_tids[9] = "Franche-Comté";
+  regions_tids[10] = "Haute-Normandie";
+  regions_tids[11] = "Ile-de-France";
+  regions_tids[12] = "Languedoc-Roussillon";
+  regions_tids[13] = "Limousin";
+  regions_tids[14] = "Lorraine";
+  regions_tids[15] = "Midi-Pyrénées";
+  regions_tids[16] = "Nord-Pas-de-Calais";
+  regions_tids[17] = "Provence-Alpes-Côte-d'Azur";
+  regions_tids[18] = "Pays de la Loire";
+  regions_tids[19] = "Picardie";
+  regions_tids[20] = "Poitou-Charentes";
+  regions_tids[21] = "Rhône-Alpes";
+
+  var current_path = window.location.pathname;
+  var zone = getQueryVariable("pays");
+  var tids_string = getQueryVariable("tids");
+  var dept = getQueryVariable("dept");
+  var date = getQueryVariable("date");
+  var region = getQueryVariable("region");
+  var countries = getQueryVariable("countries");
+  var new_url = current_path + "?zone=" + zone + "&countries=" + countries + "&dept=&date=" + date + "&tids=" + tids_string;
+
+  var width = $('#'+mapContainer).width();
+  var height = $('#'+mapContainer).height() * 0.99;
+
+  var defaultColor="#d4d5d6";
+  var disabledColor="#dfdfdf";
+  var hoverColor="#88929c";
+
+  // important - we need the original SVG's width and height
+  var svgWidth = 279.31;
+  var svgHeight = 260;
+  //var svgWidth = 587.5;
+  //var svgHeight = 550;
+
+  var paper = new Raphael(mapContainer, '100%', '100%');
+
+  // the following line makes the Raphael paper fill its container
+  paper.setViewBox(0, 0, svgWidth, svgHeight, true);
+  paper.canvas.setAttribute('preserveAspectRatio', 'true');
+  paper.canvas.setAttribute('preserveAspectRatio', 'xMidYMin meet');
+
+  var currentRegionParam = decodeURIComponent($.urlParam('region'));
+
+  var pathCount = data.length;
+  //Loop over all of the regions in the JSON file
+  for (i = 0; i < pathCount; i++) {
+
+    //STYLE ATTRIBUTES
+    var attr = {
+      stroke: "#9f9f9e",
+      "stroke-width": 1,
+      "stroke-linejoin": "round"
+    };
+
+    if(currentRegionParam == regions_tids[i])
+      attr.fill = hoverColor;
+    else
+      attr.fill = defaultColor;
+
+    attr.href = new_url + "&region=" + regions_tids[i] + "#region-pre-content";
+    attr.title = regions_tids[i];
+
+    //TRACE REGION
+    var thisPath = paper.path(data[i][3]).attr(attr);
+
+    //HOVER EFFECT
+    if(thisPath.attrs.fill != hoverColor){
+      thisPath.hover(
+        function(){
+          this.attr("fill", hoverColor);
+        },
+        function()
+        {
+          this.attr("fill", defaultColor);
+        }
+      );
+    }
+  }
+}
+
+
+// Function helping to get url param value
+$.urlParam = function(name){
+    var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+       return null;
+    }
+    else{
+       return results[1] || 0;
+    }
+}
+
+
+/* MEGAMENU */
+//On Hover Over
+function megaHoverOver(){
+  $(this).find(".block-subnav").stop().fadeTo('fast', 1).show(); //Find sub and fade it in
+  //$(this).find(".sub").css({'min-width' : 669}); //Set Width
+  $(this).addClass("on");
+}
+
+//On Hover Out
+function megaHoverOut(){
+  $(this).find(".block-subnav").stop().fadeTo('fast', 0, function() { //Fade to 0 opactiy
+  $("#megamenu ul.niv1 li.niv1").removeClass("on");
+  $(this).hide();  //after fading, hide it
+  });
+}
+
+
+//On Hover Over
+function megaHoverOverTablet(){
+  $(this).find("ul").show(); //Find sub and fade it in
+  //$(this).find(".sub").css({'min-width' : 669}); //Set Width
+  $(this).addClass("on");
+}
+
+//On Hover Out
+function megaHoverOutTablet(){
+  $(this).find("ul").hide();
+  $("#megamenu-tablet .megamenu-block").removeClass("on");
+}
+
+//On Hover Over
+function megaHoverEN(){
+ $(this).find(".block-subnav").stop().fadeTo('fast', 1).show(); //Find sub and fade it in
+  //$(this).find(".sub").css({'min-width' : 669}); //Set Width
+  $(this).addClass("on");
+}
+
+//On Hover Out
+function megaHoverOutEN(){
+
+  $(this).find(".block-subnav").stop().fadeTo('fast', 0, function() { //Fade to 0 opactiy
+    $(".megamenu-v2 .megamenu-block").removeClass("on");
+    $(this).hide();  //after fading, hide it
+  });
+}
+
+
+// config megamenu wide
+var config = {
+  sensitivity: 1, // number = sensitivity threshold (must be 1 or higher)
+  interval: 100, // number = milliseconds for onMouseOver polling interval
+  over: megaHoverOver, // function = onMouseOver callback (REQUIRED)
+  timeout: 0, // number = milliseconds delay before onMouseOut
+  out: megaHoverOut // function = onMouseOut callback (REQUIRED)
+};
+
+// config megamenu tablet
+var configTablet = {
+  sensitivity: 1, // number = sensitivity threshold (must be 1 or higher)
+  interval: 100, // number = milliseconds for onMouseOver polling interval
+  over: megaHoverOverTablet, // function = onMouseOver callback (REQUIRED)
+  timeout: 0, // number = milliseconds delay before onMouseOut
+  out: megaHoverOutTablet // function = onMouseOut callback (REQUIRED)
+};
+
+
+// config megamenu EN
+var configEN = {
+  sensitivity: 1, // number = sensitivity threshold (must be 1 or higher)
+  interval: 100, // number = milliseconds for onMouseOver polling interval
+  over: megaHoverEN, // function = onMouseOver callback (REQUIRED)
+  timeout: 0, // number = milliseconds delay before onMouseOut
+  out: megaHoverOutEN // function = onMouseOut callback (REQUIRED)
+};
+
+
+$(document).ready(function() {
+var $select = $('.ct-filters-odb');
+if($select.length > 0) {
+
+  var $list = $select.find('ul.filters-odb');
+  var $listItems = $list.children('li');
+
+  var $styledSelect = $select.find('.filters-odb-label');
+  $list.children('li').each(function() {
+    if($(this).hasClass('active')) {
+      $styledSelect.html($(this).text());
+    }
+  });
+
+
+  $styledSelect.click(function(e) {
+      e.stopPropagation();
+      if($list.is(':hidden')) {
+        $list.slideDown(200);
+        $select.addClass('open');
+      }
+      else {
+        $list.slideUp(200);
+        $select.removeClass('open');
+      }
+  });
+
+  $listItems.click(function(e) {
+      e.stopPropagation();
+      //var rel = $(this).attr('rel');
+      $listItems.removeClass('selected');
+      $(this).addClass('selected');
+      $styledSelect.html($(this).text()).removeClass('active');
+      //$select.val($(this).attr('rel'));
+      //$select.children('option[value='+rel+']').click();
+      $list.hide();
+      //$select.change();
+      //console.log($this.val());
+  });
+
+  $(document).click(function() {
+      $styledSelect.removeClass('active');
+      $list.hide();
+  });
+}
+
+  //Stop diaporama when Dailymotion on mouse over
+  $(".field-name-field-media-video-id").on('mouseover', function() {
+    $('button.diapo-pause').trigger('click');
+  });
+
+    //Adjust HP slide height
+    var height = $('#hp-slide-article-container .item-0 img').height();
+
+    //alert(height);
+    $('#hp-slide-article').css('height', height + 'px');
+
+});
+
+
+/** TABS **/
+
+$("#megamenu-tablet .current").parent().parent(".megamenu-block").addClass("curent");
+
+/*$("#megamenu-mobile").tabs().tabs(
+  "#megamenu-mobile div.megamenu-block ul",
+  {
+    tabs: ".menu-label",
+    effect: "slide",
+    initialIndex: null
+  }
+);*/
+
+setTimeout(function() {
+  $('#megamenu-mobile .megamenu-block .menu-label').click( function() {
+    var $this = $(this);
+    var $parent = $(this).parent('.megamenu-block');
+    var $siblings = $(this).parent('.megamenu-block').siblings('.megamenu-block');
+
+    $parent.find('ul').slideDown();
+    $this.addClass('current');
+
+    $siblings.find('ul').slideUp();
+    $siblings.find('.menu-label').removeClass('current');
+
+  });
+},200);
+
+
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+
+/*** AGENDA FILTER DATE ***/
+
+var dateStart = {
+  "day" : "1",
+  "month" : "1",
+  "year" : "2017"
+};
+var dateEnd = {
+  "day" : "1",
+  "month" : "1",
+  "year" : "2018"
+};
+
+var months = ["Jan", "Fév", "Mars", "Avr", "Mai", "Juin", "Juil", "Août", "Sept", "Oct", "Nov", "Déc"];
+
+/** Agenda map **/
+
+var latitude = new Array();
+var longitude = new Array();
+
+/** A SUPPRIMER : VALEURS RANDOM **/
+/*
+for (var n = 0; n < 100; n++) {
+  latitude[n] = Math.random() * (50.6292 - 43.2964) + 43.2964;
+  longitude[n] = Math.random() * (7.7521 + 4.4860) - 4.4860;
+}
+*/
+/** Fin A SUPPRIMER : VALEURS RANDOM**/
+
+var locationMarkers = new Array(latitude,longitude);
+
+var map;
+var markers = [];
+var initZoom = 6,
+    initPosLat = 47.856614,
+    initPosLng = -0.50;
+if($.urlParam('focusRegion') != '') {
+  initZoom = 8;
+}
+//var locationMarkers = [];
+var ajaxRequest;
+var inFrance = false;
+var agendaForm = '';
+
+$(document).ready(function() {
+  
+        
+
+  $.datepicker.setDefaults( $.datepicker.regional[ "fr" ] );
+  $('.target-public').click(function(e) {
+    e.preventDefault();
+    document.location.href="/fr/agenda";
+  });
+  if($('.gmap').length > 0) { // Si une map google est présente, on exécute le script google api
+
+    if($('#filterFrance').is(':checked')) {
+      inFrance = true;
+    }
+    else {
+      inFrance = false;
+    }
+    //convertMonth2();
+
+    // AGENDA PUBLIC
+    $.getScript('https://web.archive.org/web/20210713081439/https://maps.googleapis.com/maps/api/js?key=AIzaSyCYlOSMF5ul4K5Hf9uR9hUWTGJdtZMp7RA', function() {
+        // script is now loaded and executed.
+        // put your dependent JS here.
+
+
+        // Utilisation des filtres
+        $('#form-agenda-filter').submit(function(e) {
+          e.preventDefault();
+          console.log(agendaForm);
+            ajaxRequest = $.ajax({
+              type: "GET",
+              url: "/agenda",
+              data: agendaForm,
+              beforeSend: function() {
+                $('#agenda-map').addClass('loading');
+                deleteMarkers();
+                $('.agenda-event-detail').removeClass('open');
+              },
+              success: function(data) {
+
+                //console.log($(data).find('.filter-agenda-list'));
+                $('.filter-agenda-list').replaceWith($(data).find('.filter-agenda-list'));
+                $('.agenda-datas').replaceWith($(data).find('.agenda-datas'));
+                $('#agenda-map').removeClass('loading');
+                $('.ct-filter-type').addClass('open');
+                deleteMarkers();
+                setMarkers(map, inFrance);
+              },
+              complete: function() {
+                if(ajaxRequest) ajaxRequest.abort();
+              }
+          });
+        });
+
+        // Filtre par région
+        $('input[name=filterRegion]').change(function() {
+
+          if($(this).is(':checked') && $(this).val() == 'france') {
+            inFrance = true;
+          }
+          else {
+            inFrance = false;
+          }
+
+          if(ajaxRequest) ajaxRequest.abort();
+          agendaForm = $('#form-agenda-filter').serialize();
+          $('#form-agenda-filter').submit();
+
+        });
+
+        // Agenda filters buttons
+
+        $('.agenda-target').click(function(e) {
+          e.preventDefault();
+          $(this).addClass('active').siblings('.agenda-target').removeClass('active');
+        });
+        $('.target-pro').click(function(e) {
+          e.preventDefault();
+          document.location.href="/fr/agenda-pro";
+        });
+        $('.target-public').click(function(e) {
+          e.preventDefault();
+          document.location.href="/fr/agenda";
+        });
+
+        $('input[name=typeDate').change(function(e) {
+          //e.preventDefault();
+          //On change de mode
+          if(ajaxRequest) ajaxRequest.abort();
+          agendaForm = $('#form-agenda-filter').serialize();
+          //reconfig timeline
+          //$(".agenda-filter-date").dateRangeSlider("values", 10, 20);
+          $('#form-agenda-filter').submit();
+        });
+
+        $('body').on('change','.filter-agenda-list input',function(e) {
+          var $this = $(this);
+          if(ajaxRequest) ajaxRequest.abort();
+          agendaForm = $('#form-agenda-filter').serialize();
+          $('#form-agenda-filter').submit();
+        });
+
+        $('body').on('change','.event-pub-same input',function(e) {
+          var $this = $(this);
+          if(ajaxRequest) ajaxRequest.abort();
+          agendaForm = $('#form-agenda-filter').serialize();
+          $.ajax({
+              type: "GET",
+              url: "/event-agenda-infos/" + $(this).val(),
+              data: agendaForm + '&actifNode=' + $(this).val(),
+              success: function(data, statut) {
+                $('.agenda-event-detail .event-detail-inner').replaceWith($(data).filter('.event-detail-inner'));
+                //convertMonth2();
+                Dropdown('.ct-dropdown');
+                //$('.agenda-event-detail .event-detail-inner').html($(content).find('.event-detail-inner'));
+              },
+              error : function(resultat, statut, erreur){
+              },
+              complete : function(resultat, statut){
+                if(ajaxRequest) ajaxRequest.abort();
+              }
+          });
+        });
+
+        $('.back-to-filters').click(function(e) {
+          e.preventDefault();
+          backToFilters(initZoom, initPosLat, initPosLng);
+          if(marker.timeData=="futur") {
+            marker.setIcon("/sites/all/modules/custom/centenaire_core/assets/images/icon-map-agenda.png");
+          } else {
+            marker.setIcon("/sites/all/modules/custom/centenaire_core/assets/images/icon-map-agenda-nb.png");
+          }
+        });
+
+        if($.urlParam('focusRegion') == 'outremer') {
+          google.maps.event.addDomListener(window, 'load', InitMap(3, '45.96156762', '-58.9356606'));
+        }
+        else if($.urlParam('focusRegion') == 'alsace') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '48.318179', 7.441624 - 1.9));
+        }
+        else if($.urlParam('focusRegion') == 'aquitaine') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '44.700222',  -0.299579 - 1.9));
+        }
+        else if($.urlParam('focusRegion') == 'auvergne') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '45.70327', 3.344854 - 1.9));
+        }
+        else if($.urlParam('focusRegion') == 'basse-normandie') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '48.878847', -0.515749 - 1.9));
+        }
+        else if($.urlParam('focusRegion') == 'bourgogne') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '47.052505', 4.383721 - 1.9));
+        }
+        else if($.urlParam('focusRegion') == 'bretagne') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '48.202047', -2.932644 - 1.9));
+        }
+        else if($.urlParam('focusRegion') == 'centre') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '47.751569', 1.675063 - 1.9));
+        }
+        else if($.urlParam('focusRegion') == 'corse') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '42.039604', 9.012893 - 1.9));
+        }
+        else if($.urlParam('focusRegion') == 'champagne-ardenne') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '48.793409', 4.472525 - 1.9));
+        }
+        else if($.urlParam('focusRegion') == 'franche-comte') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '47.134321', 6.022302 - 1.9));
+        }
+        else if($.urlParam('focusRegion') == 'haute-normandie') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '49.524641', 0.882833 - 1.9));
+        }
+        else if($.urlParam('focusRegion') == 'ile-de-france') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '48.84992', 2.637041 - 1.9));
+        }
+        else if($.urlParam('focusRegion') == 'languedoc-roussillon') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '43.591236', 3.258363 - 1.9));
+        }
+        else if($.urlParam('focusRegion') == 'limousin') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '45.893223', 1.569602 - 1.9));
+        }
+        else if($.urlParam('focusRegion') == 'lorraine') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '48.874423',  6.208093 - 1.9));
+        }
+        else if($.urlParam('focusRegion') == 'midi-pyrenees') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '44.085943', 1.520862 - 1.9));
+        }
+        else if($.urlParam('focusRegion') == 'nord-pas-de-calais') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '50.480115', 2.793727 - 1.9));
+        }
+        else if($.urlParam('focusRegion') == 'provence-alpes-cote-dazur') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '43.935169', 6.067919 - 1.9));
+        }
+        else if($.urlParam('focusRegion') == 'pays-de-la-loire') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '47.763284', -0.329969 - 1.9));
+        }
+        else if($.urlParam('focusRegion') == 'picardie') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '49.663613', 2.528073 - 1.9));
+        }
+        else if($.urlParam('focusRegion') == 'poitou-charentes') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '45.903552', -0.309184 - 1.9));
+        }
+        else if($.urlParam('focusRegion') == 'rhone-alpes') {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, '45.16958', 5.450282 - 1.9));
+        }
+        else {
+          google.maps.event.addDomListener(window, 'load', InitMap(initZoom, initPosLat, initPosLng));
+        }
+
+          // init filtre timeline date
+        setTimeout(function() {
+          var defaultValuesDates = {
+            min: new Date($('.first-date').text(), 0, 1),
+            max: new Date($('.last-date').text(), 11, 31)
+          };
+
+          // if($('#agendaEndDate').val() == '1510665683') {
+          //   var maxDate = new Date($('#agendaStartDate').val()*1000);
+          //   var maxAugm = maxDate.setMonth(maxDate.getMonth() + 3);
+          //   defaultValuesDates.max = maxAugm;
+          //   var maxParse = new Date(maxAugm);
+          //   $('#to').val(maxParse);
+          // }
+          // 1510666016,,
+          // Si filtrage par dates
+          if($('#agendaStartDate').val() != '' && $('#agendaEndDate').val() != '') {
+            defaultValuesDates.min = new Date($('#agendaStartDate').val()*1000);
+            $('#from').val(defaultValuesDates.min);
+
+            // OPTION: INtervalle de 3 mois apres startDate
+            // var maxDate = new Date($('#agendaStartDate').val()*1000);
+            // var maxAugm = maxDate.setMonth(maxDate.getMonth() + 3);
+            //
+            // defaultValuesDates.max = maxAugm;
+            // var maxParse = new Date(maxAugm);
+            // $('#to').val(maxParse);
+            // OPTION 2: prendre valeur donnee par la requete
+            defaultValuesDates.max = new Date($('#agendaEndDate').val()*1000);
+            $('#to').val(defaultValuesDates.max);
+            // console.log("maxDate=",maxDate,"maxDate.getMonth()",maxDate.getMonth(),"values dates maxDate augm",new Date(maxAugm));
+            // defaultValuesDates.max = new Date($('#agendaEndDate').val()*1000);
+
+            //Format Date for datepicker
+            function formatDate(timestamp) {
+              var date = new Date(timestamp);
+                // Hours part from the timestamp
+              var months = date.getMonth()+1;
+              // Minutes part from the timestamp
+              var days = date.getDate();
+              // Seconds part from the timestamp
+              var year = date.getFullYear();
+              // Will display time in 10:30:23 format
+              var formattedTime = days + '/' + months + '/' + year;
+              return formattedTime;
+            }
+              $('#from').val(formatDate(defaultValuesDates.min));
+            $('#to').val(formatDate(defaultValuesDates.max));
+
+          }
+
+          $(".agenda-filter-date").dateRangeSlider({
+
+            formatter:function(val){
+              var days = val.getDate(),
+                month = val.getMonth(),
+                year = val.getFullYear();
+                if(days < 10) days = "0" + days;
+              var newFormat = '<div class="event-date">'
+                  +'<span class="event-day">' + days + '</span>'
+                  +'<span class="event-month">' + months[month] + '</span>'
+                  +'<span class="event-year">' + year + '</span>'
+                +'</div>';
+              return newFormat;
+            },
+
+            bounds: {
+              min: new Date($('.first-date').text(), 0, 1),
+              max: new Date($('.last-date').text(), 11, 31)
+            },
+            symmetricPositionning: true,
+            defaultValues:{
+                min: defaultValuesDates.min,
+                max: defaultValuesDates.max
+            },
+            range: false
+          });
+
+          $(".agenda-filter-date").bind("valuesChanging", function(e, data){
+            if(ajaxRequest) ajaxRequest.abort();
+          });
+
+          // Changement dates timeline
+          $(".agenda-filter-date").bind("valuesChanged", function(e, data){
+            var startDate = {
+              day: data.values.min.getDate(),
+              month: data.values.min.getMonth() + 1,
+              year: data.values.min.getFullYear(),
+            };
+            var endDate = {
+              day: data.values.max.getDate(),
+              month: data.values.max.getMonth() + 1,
+              year: data.values.max.getFullYear(),
+            };
+
+
+            var myStartDate = startDate.day + '-' + startDate.month + '-' + startDate.year;
+            myStartDate = myStartDate.split("-");
+            var newStartDate = newStartDate = myStartDate[1]+"/"+myStartDate[0]+"/"+myStartDate[2];
+            newStartDate = new Date(newStartDate).getTime()/1000;
+            var startdatePicker = formatDate(newStartDate*1000);
+
+            $('#from').val(startdatePicker);
+            var myEndDate = endDate.day + '-' + endDate.month + '-' + endDate.year;
+            myEndDate = myEndDate.split("-");
+            var newEndDate = newEndDate = myEndDate[1]+"/"+myEndDate[0]+"/"+myEndDate[2];
+            newEndDate = new Date(newEndDate).getTime()/1000;
+            var enddatePicker = formatDate(newEndDate*1000);
+              $('#to').val(enddatePicker);
+
+            $('#agendaStartDate').val(newStartDate);
+            $('#agendaEndDate').val(newEndDate);
+
+            agendaForm = $('#form-agenda-filter').serialize();
+            $('#form-agenda-filter').submit();
+          });
+
+        },200);
+
+        /** AGENDA PUBLIC MOBILE **/
+        $('.ct-agenda-public').find('.button-filter-close a').click(function(e) {
+          e.preventDefault();
+          $('.bloc-filter-agenda-mobile, .ct-all-filters').addClass('open');
+          $('.bloc-filter-agenda-mobile').addClass('mobile-fixed');
+          $('.button-agenda-result-mobile').addClass("mobile-fixed");
+          backToFilters(initZoom, initPosLat, initPosLng);
+        });
+        $('.ct-agenda-public').find('.button-filter-open .close-filters').click(function(e) {
+          e.preventDefault();
+          $('.bloc-filter-agenda-mobile, .ct-all-filters').removeClass('open');
+          $('.bloc-filter-agenda-mobile, .ct-all-filters').removeClass('open');
+          $('.button-agenda-result-mobile').removeClass("mobile-fixed");
+        });
+        $('.ct-agenda-public').find('.button-agenda-result-mobile a').click(function(e) {
+          e.preventDefault();
+          $('.bloc-filter-agenda-mobile, .ct-all-filters').removeClass('open');
+        });
+        $('.ct-agenda-public').find('.button-filter-open .cancel-filters').click(function(e) {
+          e.preventDefault();
+          if(ajaxRequest) ajaxRequest.abort();
+          agendaForm = '';
+          $('#agendaStartDate, #agendaEndDate').val('');
+          $('#filterFrance').attr('checked','checked');
+          inFrance = true;
+          if(ajaxRequest) ajaxRequest.abort();
+          $(".agenda-filter-date").dateRangeSlider("min", new Date($('.first-date').text(), 0, 1));
+          $(".agenda-filter-date").dateRangeSlider("max", new Date($('.last-date').text(), 11, 31));
+          $('.bloc-filter-agenda-mobile, .ct-all-filters').removeClass('open');
+        });
+    });// end getScript
+  }// end if($('.gmap')
+// AGENDA PRO
+
+  $('.ct-agenda-pro #form-agenda-filter').submit(function(e) {
+    e.preventDefault();
+    console.log("agendaForm", agendaForm);
+    ajaxRequest = $.ajax({
+      type: "GET",
+      url: "/agenda-pro",
+      data: agendaForm,
+      beforeSend: function() {
+        $('.agenda-event-list').addClass('loading');
+      },
+      success: function(data) {
+        $('.agenda-event-list').removeClass('loading');
+        $('.agenda-event-list').replaceWith($(data).find('.agenda-event-list'));
+        if($('#agendaStartDate').val() != '' || $('#agendaEndDate').val() != '') {
+          $('.reset-agenda-date').addClass('show');
+        }
+        else {
+          $('.reset-agenda-date').removeClass('show');
+        }
+        $('.event-item-img').each(function() {
+          var height = $(this).parent('.event-item-right').siblings('.intro').find('.ct-intro-pro').height();
+          $(this).css('min-height', height);
+        });
+      },
+      error: function() {
+        //alert('une erreur');
+      },
+      complete: function() {
+        if(ajaxRequest) ajaxRequest.abort();
+      }
+    });
+  });
+  $('input[name=byDept]').change(function(e) {
+    if(ajaxRequest) ajaxRequest.abort();
+    agendaForm = $('#form-agenda-filter').serialize();
+    $('#form-agenda-filter').submit();
+  });
+  $('input[name=eventType]').change(function(e) {
+    var valType = $('input[name=eventType]').val();
+
+    if(ajaxRequest) ajaxRequest.abort();
+    agendaForm = $('#form-agenda-filter').serialize();
+    $('#form-agenda-filter').submit();
+  });
+  $(".ct-agenda-pro #from").datepicker({
+    onSelect: function(selectedDate) {
+      var convertDate = fromFrtoUs(selectedDate);
+      var convert1 = new Date(convertDate);
+
+      console.log("convert1=",Date.parse(convert1));
+      console.log("convertDate=",convertDate);
+      // var parseDate = new Date(convertDate).getTime()/1000;
+      
+      var parseDate = Date.parse(convertDate)/1000;
+      console.log("parseDate=",parseDate);
+      $('#agendaStartDate').val(parseDate);
+      agendaForm = $('#form-agenda-filter').serialize();
+      $('#form-agenda-filter').submit();
+    }
+  })
+  $(".ct-agenda-pro #to").datepicker({
+    onSelect: function(selectedDate) {
+      console.log(selectedDate);
+      var convertDate = fromFrtoUs(selectedDate);
+      console.log("convertDate=",convertDate);
+      console.log(convertDate);
+      var parseDate = Date.parse(convertDate)/1000;
+      parseDate + 86399;
+      console.log("parseDate=",parseDate);
+      $('#agendaEndDate').val(parseDate);
+      agendaForm = $('#form-agenda-filter').serialize();
+      $('#form-agenda-filter').submit();
+    }
+  })
+  $("#from").datepicker({
+    onSelect: function(selectedDate) {
+      var convertDate = fromFrtoUs(selectedDate);
+      var parseDate = new Date(convertDate).getTime();
+      var fromDate = new Date($('#agendaStartDate').val()*1000);
+      var ValueMax = $(".agenda-filter-date").dateRangeSlider("values").max;
+      $(".agenda-filter-date").dateRangeSlider("values", parseDate, ValueMax);
+      agendaForm = $('#form-agenda-filter').serialize();
+      // $('#form-agenda-filter').submit();
+    }
+  })
+  $("#to").datepicker({
+    onSelect: function(selectedDate) {
+      console.log(selectedDate);
+      var convertDate = fromFrtoUs(selectedDate);
+      console.log(convertDate);
+      var parseDate = new Date(convertDate).getTime();
+      var ValueMin = $(".agenda-filter-date").dateRangeSlider("values").min;
+      $(".agenda-filter-date").dateRangeSlider("values", ValueMin, parseDate);
+      agendaForm = $('#form-agenda-filter').serialize();
+      $('#form-agenda-filter').submit();
+    }
+  })
+
+  $('input[name=typeDate').click(function(e) {
+    //e.preventDefault();
+    //On change de mode
+    if(ajaxRequest) ajaxRequest.abort();
+    agendaForm = $('#form-agenda-filter').serialize();
+    //reconfig timeline
+    //$(".agenda-filter-date").dateRangeSlider("values", 10, 20);
+    $('#form-agenda-filter').submit();
+  });
+
+  // Réinitialisation des dates
+  $('.reset-agenda-date').click(function(e) {
+    e.preventDefault();
+    if(ajaxRequest) ajaxRequest.abort();
+    $('#agendaStartDate, #agendaEndDate, #from, #to').val('');
+
+    agendaForm = $('#form-agenda-filter').serialize();
+    $('#form-agenda-filter').submit();
+  });
+
+  // Changement dates par le datepicker
+  var from = $('.filter-by-date #from').val();
+  var to = $('.filter-by-date #to').val();
+  console.log("datepicker range",from," - ",to);
+
+  function fromFrtoUs(myFrdateString) {
+    var a = myFrdateString.split("/");
+    console.log("US=", a);
+    var usString = a[1] + "/" + a[0] + "/" + a[2];
+    console.log("usString=", usString);
+    return usString;
+    }
+  // $("#from").datepicker({
+  //
+  //   onSelect: function(selectedDate) {
+  //     console.log("from 1588");
+  //     this.focus();
+  //     console.log("selectedDate",selectedDate);
+  //     var convertDate = fromFrtoUs(selectedDate);
+  //     console.log("convertDate", convertDate);
+  //     var parseDate = new Date(convertDate).getTime();
+  //     console.log("parseDate",parseDate);
+  //     var ValueMax = $(".agenda-filter-date").dateRangeSlider("values").max;
+  //     console.log("ValueMax",ValueMax);
+  //     $(".agenda-filter-date").dateRangeSlider("values", parseDate, ValueMax);
+  //
+  //   }
+  //   // onClose: function() {
+  //   //   this.blur();
+  //   //   alert(to);
+  //   // }
+  // })
+  // $("#to").datepicker({
+  //   onSelect: function(selectedDate) {
+  //     this.focus();
+  //     console.log("selectedDate",selectedDate);
+  //     var convertDate = fromFrtoUs(selectedDate);
+  //     console.log("convertDate", convertDate);
+  //     var parseDate = new Date(convertDate).getTime();
+  //     var ValueMin = $(".agenda-filter-date").dateRangeSlider("values").min;
+  //     console.log("ValueMin",ValueMin);
+  //     $(".agenda-filter-date").dateRangeSlider("values", ValueMin, parseDate);
+  //
+  //   }
+  //   // onClose: function() {
+  //   //   this.blur();
+  //   //   alert(to);
+  //   // }
+  // })
+
+
+  // AGENDA PRO
+  Dropdown('.ct-dropdown');
+
+  $('body').on('click','.event-details-button-open', function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    var $bloc = $(this).parent('.agenda-event-item');
+    if(!$bloc.hasClass('open')) {
+      $bloc.addClass('open').find('.bloc-to-slide.event-item-left').slideDown(500);
+      setTimeout(function() {
+        $bloc.find('.bloc-to-slide.event-item-right-slide').slideDown(400);
+      }, 100);
+      //$this.text($(this).attr('data-close'));
+      $this.hide();
+      //$bloc.find('.event-details-button-close').show();
+      $bloc.find('.intro .event-text').hide();
+    }
+    /*else {
+      $(this).siblings('.event-item-left').find('.event-text').show();
+      $bloc.slideUp().removeClass('open');
+      $this.text($(this).attr('data-open'));
+    }*/
+  });
+  $('body').on('click','.event-details-button-close', function(e) {
+    e.preventDefault();
+    var $this = $(this);
+    var $bloc = $(this).parents('.agenda-event-item');
+    if($bloc.hasClass('open')) {
+      $bloc.removeClass('open').find('.bloc-to-slide').slideUp();
+      //$this.text($(this).attr('data-close'));
+      $bloc.find('.event-details-button-open').show();
+      //$this.hide();
+      $bloc.find('.intro .event-text').fadeIn();
+    }
+    /*else {
+      $(this).siblings('.event-item-left').find('.event-text').show();
+      $bloc.slideUp().removeClass('open');
+      $this.text($(this).attr('data-open'));
+    }*/
+  });
+  $('.deposerAnnonce').click(function(e) {
+    e.preventDefault();
+    $('#modal').iziModal('open');
+  });
+  $('.creerAnnonce').click(function(e) {
+    e.preventDefault();
+    document.location.href="/fr/event-propose";
+  });
+  $('.modifierAnnonce').click(function(e) {
+    e.preventDefault();
+    $('.modifier-option').show();
+    $('.original').hide();
+  });
+  $('.modifierAnnonceNo').click(function(e) {
+    e.preventDefault();
+    var refAnnonce = $("#refAnnonce").val();
+    var numlabel = $('#numeroLabel').val();
+    //console.log('refAnnonce', refAnnonce);
+    if( (refAnnonce !== '') && (numlabel !== '') ){
+      var dest = "event-propose?code=" + refAnnonce + "-" + numlabel;
+      //console.log('dest', dest);
+      // var dest ="/fr/agenda-pro" + param;
+      document.location.href=dest;
+    } else {
+      alert('Vous devez mettre un numéro dans le champ');
+    }
+  });
+
+
+  // AGENDA PRO MOBILE
+  $('.ct-agenda-pro').find('.button-filter-close a').click(function(e) {
+    e.preventDefault();
+    $('.bloc-filter-agenda-mobile').addClass('open');
+    $('.ct-all-filters').slideDown();
+  });
+  $('.ct-agenda-pro').find('.button-filter-open .close-filters').click(function(e) {
+    e.preventDefault();
+    $('.bloc-filter-agenda-mobile').removeClass('open');
+    $('.ct-all-filters').slideUp();
+  });
+  $('.ct-agenda-pro').find('.button-agenda-result-mobile a').click(function(e) {
+    e.preventDefault();
+    $('.bloc-filter-agenda-mobile, .ct-all-filters').removeClass('open');
+  });
+
+  NameDocument();
+
+  // FORMULAIRE DEPOT ANNONCE AGENDA PRO
+  $('.form-event-steps-tab a').click(function(e) {
+    e.preventDefault();
+
+  });
+
+  $('.form-event-pro .step1').addClass('open').show();
+  $('.tab-step1').addClass('open');
+
+  $('.form-event-next, #eventpro-node-form .form-actions input[type=submit] ').click(function(e) {
+    e.preventDefault();
+    var $step = $('.form-event-step.open');
+    if($step.hasClass('step1')) {
+      $('.form-event-pro .error').hide();
+      $('#edit-submit').hide();
+      //console.log("step1", $(document).find('.step1 .form-item').length);
+      // if($step.find('input.required, textarea.required').length > 0) {
+      if($('#edit-field-eventpro-numlabelisation-und-0-value').val() == ''){
+        // || ($('#edit-field-eventpro-numlabelisation-und-0-value').val() == '')
+        $('.form-event-pro .error').show();
+        $('.error').text('Vous devez remplir tous les champs requis');
+        return false;
+      }
+      if($('.form-item-title input.required').val() == ''){
+        // || ($('#edit-field-eventpro-numlabelisation-und-0-value').val() == '')
+        $('.form-event-pro .error').show();
+        $('.error').text('Vous devez remplir tous les champs requis');
+        return false;
+      } else {
+        // if($step.find('input.required, textarea.required').length > 0) {
+        //console.log("on teste tel + email");
+        var tel = $('#edit-field-eventpro-tel-und-0-value').val();
+        //console.log("tel", tel);
+        var email = $('#edit-field-eventpro-emailauteur-und-0-value').val();
+        //console.log("email", email);
+        // TEST EMAIL
+        if(email !== '') {
+          //console.log("Testing email", email);
+          if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))  {
+              //console.log("GOOD email", email);
+            } else {
+              $('.error').show();
+                $('.error').text('Votre email doit être valide.');
+                return false;
+              }
+        }
+        // TEST TELEPHONE
+        if(tel !== '') {
+          //console.log("Testing tel", email);
+          var chiffres = new String(tel);
+          var compteur;
+          if(chiffres.indexOf('+33')!=-1) {
+            chiffres = chiffres.replace('+33', '0');}
+          chiffres = chiffres.replace(/[^0-9]/g, '');
+          // Nombre de chiffres
+          compteur = chiffres.length;
+          if (compteur!=10)  {
+            $('.error').show();
+            $('.error').text("Assurez-vous de rentrer un numéro à 10 chiffres (xxx-xxx-xxxx)");
+            return false;
+          }  else {
+            //console.log("GOOD tel", tel);
+          }
+        }
+        $step.removeClass('open').hide();
+        $('.form-item-title').hide();
+        $('.tab-step').removeClass('open');
+        $('.tab-step2').addClass('open');
+        $('.step2').addClass('open').fadeIn();
+        $('.vertical-tabs-panes .field-group-tab').eq(1).css("display", "block");
+        $('.form-event-pro .error').hide();
+        $('.form-event-prev').show().addClass('vis');
+        //console.log('passage etape 2');
+        scrollToAnchor('topTabs');
+
+
+      }
+    }
+
+    if($step.hasClass('step2')) {
+      //console.log("step2");
+      if($step.find('.form-radios input:checked').length < 1) {
+        //console.log('.form-radios input:checked');
+        $('.form-event-pro .error').show();
+        $('.error').text('Vous devez remplir tous les champs requis');
+      }
+      else {
+        if($step.find('input.required, textarea.required').length > 0) {
+          $step.find('input.required, textarea.required').each(function() {
+            if($(this).val() == '') {
+              //console.log('.val() == vide');
+              alert('Vous devez remplir tous les champs requis');
+            }
+            if(email !== '') {
+              //console.log("Testing email", email);
+              if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))  {
+                  //console.log("GOOD email", email);
+                } else {
+                  $('.error').show();
+                    $('.error').text('Votre email doit être valide.');
+                    return false;
+                  }
+            }
+            else {
+              $step.removeClass('open').hide();
+              $('.tab-step').removeClass('open');
+              $('.tab-step3').addClass('open');
+              $('.vertical-tabs-panes .field-group-tab').eq(2).css("display", "block");
+              $('.step3').addClass('open').fadeIn();
+              $('.captcha').addClass('open').fadeIn();
+              $('.form-event-pro .error').hide();
+              //console.log('passage etape 3');
+              $('.form-event-next').hide();
+                $('#edit-submit').show();
+              scrollToAnchor('topTabs');
+            }
+          });
+        }
+        else {
+          $step.removeClass('open').hide();
+          $('.tab-step').removeClass('open');
+          $('.tab-step3').addClass('open');
+          $('.vertical-tabs-panes .field-group-tab').eq(2).css("display", "block");
+          $('.step3').addClass('open').fadeIn();
+          $('.captcha').addClass('open').fadeIn();
+          $('#edit-submit').show();
+          $('.form-event-pro .error').hide();
+          //console.log('passage etape 3');
+          scrollToAnchor('topTabs');
+          $('.form-event-next').hide();
+        }
+      }
+    }
+
+    if($step.hasClass('step3')) {
+      //console.log("step3");
+      if($step.find('input.required, textarea.required').length > 0) {
+        $step.find('input.required, textarea.required').each(function() {
+          if($(this).val() == '') {
+            $('.form-event-pro .error').show();
+            $('.error').text('Vous devez remplir tous les champs requis');
+            return false;
+          }
+          else {
+            $('.form-event-pro .error').hide();
+            //console.log('Etapes TOUTES OK');
+          }
+        });
+      }
+      else if($step.find('input#edit-field-eventpro-date-und-0-value-datepicker-popup-0').val() == '') {
+        $('.form-event-pro .error').show();
+        $('.error').text('Vous devez remplir tous les champs requis');
+        return false;
+      }
+      else {
+        
+        $('.form-event-pro .error').hide();
+        //console.log('Etapes TOUTES OK final');
+        $('#eventpro-node-form').submit();
+      }
+    }
+
+  });
+  // Fonction Scrollto
+  function scrollToAnchor(aid){
+    var aTag = $("a[name='"+ aid +"']");
+    $('html,body').animate({scrollTop: aTag.offset().top},'slow');
+  }
+  $('.form-event-prev').click(function(e) {
+    e.preventDefault();
+    var $step = $('.form-event-step.open');
+    $('.captcha, .node-webform.node-full #edit-submit').removeClass('open').hide();
+
+    if($step.hasClass('step1')) {
+      //console.log("step1 :no prev step");
+
+    } else if ($step.hasClass('step2')) {
+      $step.removeClass('open').hide();
+      $('.tab-step').removeClass('open');
+      $('.tab-step1').addClass('open');
+      $('.step1').addClass('open').fadeIn();
+      $('.form-item-title').show();
+      //console.log('passage etape 1');
+
+    } else if ($step.hasClass('step3')) {
+      $step.removeClass('open').hide();
+      $('.tab-step').removeClass('open');
+      $('.tab-step2').addClass('open');
+      $('.form-event-next').show();
+      $('.step2').addClass('open').fadeIn();
+      //console.log('passage etape 2');
+
+    }
+
+    });
+
+  $('.event-item-img').each(function() {
+    var height = $(this).parent('.event-item-right').siblings('.intro').find('.ct-intro-pro').height();
+    $(this).css('min-height', height);
+  });
+
+});// end document ready
+
+// Init de la map
+function InitMap(initZoom, lat, lng) {
+
+  var mapOptions = {
+    zoom: initZoom,
+    zoomControl: true,
+    scrollwheel: true,
+    gestureHandling: 'greedy',
+    zoomControlOptions: {
+        position: google.maps.ControlPosition.RIGHT_TOP
+    },
+    center: new google.maps.LatLng(lat, lng),
+    // OLD STYLE
+    //  styles: [{"featureType":"administrative","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"administrative.province","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"saturation":-100},{"lightness":65},{"visibility":"on"}]},{"featureType":"poi","elementType":"all","stylers":[{"saturation":-100},{"lightness":"50"},{"visibility":"simplified"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":"-100"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"all","stylers":[{"lightness":"30"}]},{"featureType":"road.local","elementType":"all","stylers":[{"lightness":"40"}]},{"featureType":"transit","elementType":"all","stylers":[{"saturation":-100},{"visibility":"simplified"}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffff00"},{"lightness":-25},{"saturation":-97}]},{"featureType":"water","elementType":"labels","stylers":[{"lightness":-25},{"saturation":-100}]}]
+    styles:
+    [
+      {"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":1}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":0}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#cccccc"},{"lightness":1}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":2},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":1}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":1}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":2}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":2}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":1}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":4}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":1}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":0}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":0},{"weight":1.2}]}
+    ]
+  };
+
+  map = new google.maps.Map(document.getElementById('agenda-map'), mapOptions);
+  setMarkers(map, inFrance);
+  // checkZoomMarker();
+
+}
+
+
+// Ajout des markers sur la map
+function setMarkers(map,region) {
+  var setMarkerZoom = 3;
+  var $agendaDatas = $('.agenda-datas input');
+
+  // Si en France
+  if(region) {
+    $agendaDatas = $('.agenda-datas input[data-country=France]');
+  }
+  // Si dans le monde
+  if(!region && $.urlParam('focusRegion') != 'outremer') {
+    map.setZoom(setMarkerZoom);
+    map.setCenter(new google.maps.LatLng(initPosLat, initPosLng));
+  }
+  var markerZoom = '';
+
+  // Pour chaque event, on crée un marker
+  $agendaDatas.each(function(i) {
+    //var marker;
+    var $this = $(this);
+    var nid = $this.attr('data-nid');
+
+
+
+    var time = $this.attr('data-time');
+    // console.log("marker date calc", time);
+    var markerLat = $this.attr('data-latitude');
+    var markerLng = $this.attr('data-longitude');
+    if(markerLat == '') markerLat = locationMarkers[0][i];
+    if(markerLng == '') markerLng = locationMarkers[1][i];
+
+    var iconTime;
+
+    if (nid == $.urlParam('nid')) {
+      if(time == "futur") {
+                  iconTime ="/sites/all/modules/custom/centenaire_core/assets/images/icon-map-agenda_large_color.png";
+                } else {
+                   iconTime ="/sites/all/modules/custom/centenaire_core/assets/images/icon-map-agenda_large_nb.png";
+                }
+    }
+    else {
+      if(time == "past") {
+        iconTime = '/sites/all/modules/custom/centenaire_core/assets/images/icon-map-agenda-nb.png';
+      } else {
+        iconTime = '/sites/all/modules/custom/centenaire_core/assets/images/icon-map-agenda.png';
+      }
+    }
+
+    marker = new google.maps.Marker({
+      position: new google.maps.LatLng(markerLat,markerLng),
+      map: map,
+      icon: iconTime,
+      timeData: time
+    });
+    if (nid == $.urlParam('nid')) {
+      map.setZoom(8);
+      map.setCenter(marker.getPosition());
+      markerZoom = marker;
+    }
+
+    
+    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+      
+      return function() {
+        agendaForm = $('#form-agenda-filter').serialize();
+        console.log('click marker' + agendaForm);
+        $.ajax({
+            type: "GET",
+            url: "/event-agenda-infos/" + nid,
+            data: agendaForm + '&actifNode=' + nid,
+            success: function(content, statut) {
+
+              // alert(data);
+                $('#agenda-map').removeClass('loading');
+                $('.agenda-event-detail').html(content);
+                Dropdown('.ct-dropdown');
+                PopMailOverlay();
+                NameDocument();
+                map.setZoom(8);
+                //map.setCenter(marker.getPosition());
+                map.setCenter(new google.maps.LatLng(marker.getPosition().lat(),marker.getPosition().lng() - 0.9));
+
+                $('.ct-filter-type').removeClass('open');
+                $('.agenda-event-detail').addClass('open');
+                //convertMonth2();
+
+                for (var j = 0; j < markers.length; j++) {
+                  // On ne change pas les icones pour conserver les donnees precedentes
+                  // var time = markers[j].attr('data-time');
+                  // console.log("markers time=",time);
+                  // markers[j].setIcon("/sites/all/modules/custom/centenaire_core/assets/images/icon-map-agenda-nb.png");
+                  // findIcon(markers[j]);
+                  // markers[j].setIcon("/sites/all/modules/custom/centenaire_core/assets/images/icon-map-agenda_sm.png");
+                
+                  if(markers[j].timeData=="futur") {
+                    markers[j].setIcon("/sites/all/modules/custom/centenaire_core/assets/images/icon-map-agenda.png");
+                  } else {
+                    markers[j].setIcon("/sites/all/modules/custom/centenaire_core/assets/images/icon-map-agenda-nb.png");
+                  }
+                }
+
+
+
+                if(marker.timeData=="futur") {
+                  marker.setIcon("/sites/all/modules/custom/centenaire_core/assets/images/icon-map-agenda_large_color.png");
+                } else {
+                  marker.setIcon("/sites/all/modules/custom/centenaire_core/assets/images/icon-map-agenda_large_nb.png");
+                }
+
+                google.maps.event.addDomListener($('.back-to-filters').get(0), 'click', function (e) {
+                  e.preventDefault();
+                  backToFilters(initZoom, initPosLat, initPosLng);
+                  if(marker.timeData=="futur") {
+                    marker.setIcon("/sites/all/modules/custom/centenaire_core/assets/images/icon-map-agenda.png");
+                  } else {
+                    marker.setIcon("/sites/all/modules/custom/centenaire_core/assets/images/icon-map-agenda-nb.png");
+                  }
+                });
+            },
+            error : function(resultat, statut, erreur){
+
+            },
+
+            complete : function(resultat, statut){
+            }
+
+        });
+      }
+    })(marker, i));
+    markers.push(marker);
+  });
+
+  if(markerZoom != '') {
+      map.setZoom(8);
+      map.setCenter(markerZoom.getPosition());
+  } 
+  /*else {
+    map.setZoom(setMarkerZoom);
+    map.setCenter(new google.maps.LatLng(initPosLat, initPosLng));
+  }*/
+}
+
+// Retour aux filtres
+function backToFilters(zoom, lat, lng) {
+  $('.ct-filter-type').addClass('open');
+  $('.agenda-event-detail').removeClass('open');
+
+  for (var j = 0; j < markers.length; j++) {
+    // markers[j].setIcon("/sites/all/modules/custom/centenaire_core/assets/images/icon-map-agenda.png");
+  }
+  map.setZoom(zoom);
+  //map.setCenter(new google.maps.LatLng(lat, lng));
+}
+
+
+// Removes the markers from the map, but keeps them in the array.
+function clearMarkers() {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+  }
+}
+
+// Deletes all markers in the array by removing references to them.
+function deleteMarkers() {
+  clearMarkers();
+  markers = [];
+}
+
+function convertMonth() {
+  var monthEvent = $('.agenda-event-detail .event-month').attr('data-month');
+  $('.agenda-event-detail .event-month').text(months[monthEvent - 1]);
+}
+/*
+function convertMonth2() {
+  $('.agenda-event-detail .event-month').each(function() {
+    var $this = $(this);
+    var monthEvent = $(this).text();
+    if(monthEvent == "Janvier") 
+      $this.text(months[0]);
+    if(monthEvent == "Février") 
+      $this.text(months[0]);
+    if(monthEvent == "Avril") 
+      $this.text(months[3]);
+    if(monthEvent == "Juillet") 
+      $this.text(months[6]);
+    if(monthEvent == "Septembre") 
+      $this.text(months[8]);
+    if(monthEvent == "Octobre") 
+      $this.text(months[9]);
+    if(monthEvent == "Novembre") 
+      $this.text(months[10]);
+    if(monthEvent == "Décembre") 
+      $this.text(months[11]);
+  });
+}*/
+
+// Overlay send mail to a friend
+function PopMailOverlay() {
+  $(".popmail").overlay({
+    mask: "#6E6E6E",
+    left: 400,
+    top : 20,
+    closeOnClick:true,
+    fixed:false,
+    onBeforeLoad: function() {
+      $("#overlay").addClass("overlay_mail");
+      var wrap = this.getOverlay().find(".content-wrap");
+      var address = this.getTrigger().attr("href")+" #block-system-main";
+      wrap.load(address);
+    },
+    onClose: function() {
+      $("#overlay .contentWrap").html("");
+      $("#overlay").removeClass("overlay_mail");
+    }
+  });
+}
+
+function NameDocument() {
+  $('.event-info-docs a').each(function() {
+    var url = $(this).attr('href');
+    var name = url.substring(url.lastIndexOf('/')+1);
+    $(this).text(name);
+  });
+}
+
+function Dropdown(element) {
+  var $container = $(element);
+  if($container.length < 1 || $container.hasClass('ready')) { return; }
+
+  $container.each(function() {
+
+    var $dropdown = $(this);
+    var $select = $(this).find('select');
+    var $list = $dropdown.find('ul.dropdown-list');
+    var $listItems = $list.children('li');
+
+    var $styledSelect = $dropdown.find('.dropdown-label');
+    $list.children('li').each(function() {
+      if($(this).hasClass('active')) {
+        $styledSelect.html($(this).text());
+      }
+    });
+
+    $styledSelect.click(function(e) {
+      e.stopPropagation();
+
+      $('ul.dropdown-list').not($list).hide();
+      $('.ct-dropdown').not($dropdown).removeClass('open');
+
+      if($list.is(':hidden')) {
+        $list.slideDown(200);
+        $dropdown.addClass('open');
+      }
+      else {
+        $list.slideUp(200);
+        $dropdown.removeClass('open');
+      }
+    });
+
+    $listItems.find('input').change(function() {
+      //e.stopPropagation();
+      var $input = $(this);
+      var $li = $(this).parent('li');
+
+      $listItems.removeClass('selected');
+      $li.addClass('selected');
+      $styledSelect.html($li.find('label').text()).removeClass('active');
+      $dropdown.removeClass('open');
+      //$select.val($(this).attr('rel'));
+      $list.hide();
+
+        //$select.change();
+    });
+
+    $(document).click(function() {
+      $styledSelect.removeClass('active');
+      $dropdown.removeClass('open');
+      $list.hide();
+    });
+
+    $container.addClass('ready');
+  });
+}
+  jQuery(function($){
+  $.datepicker.regional['fr'] = {
+    currentText: 'Aujourd\'hui',
+    monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin',
+    'Juillet','Aout','Septembre','Octobre','Novembre','Décembre'],
+    monthNamesShort: ['Jan','Fev','Mar','Avr','Mai','Jun',
+    'Jul','Aou','Sep','Oct','Nov','Dec'],
+    dayNames: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'],
+    dayNamesShort: ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam'],
+    dayNamesMin: ['Di','Lu','Ma','Me','Je','Ve','Sa'],
+    weekHeader: 'Sm',
+    dateFormat: 'dd/mm/yy',
+    firstDay: 1,
+    // isRTL: false,
+    showMonthAfterYear: false,
+    yearSuffix: '',
+    // minDate: 0,
+    // maxDate: '+12M +0D',
+    numberOfMonths: 1,
+    // showButtonPanel: true,
+    showOn: "button",
+    buttonImage: "/sites/all/modules/custom/centenaire_core/assets/images/calendar.gif",
+    buttonImageOnly: true,
+    buttonText: "Select date"
+    };
+  $.datepicker.setDefaults($.datepicker.regional['fr']);
+});
+//Format Date for datepicker
+function formatDate(timestamp) {
+  var date = new Date(timestamp);
+    // Hours part from the timestamp
+  var months = date.getMonth()+1;
+  // Minutes part from the timestamp
+  var days = date.getDate();
+  // Seconds part from the timestamp
+  var year = date.getFullYear();
+  //console.log(formattedTime);
+  // Will display time in 10:30:23 format
+  var formattedTime = days + '/' + months + '/' + year;
+  //console.log("formattedTime",formattedTime);
+  return formattedTime;
+}
+$('document').ready(function(){
+  $('body').on({'touchmove': function(e) { 
+    // console.log("windo offset", $(window).scrollTop());
+    var offset = $(window).scrollTop();
+    /*if (offset > 553) {
+        $('.bloc-filter-agenda-mobile').addClass("mobile-fixed");         
+    } else {
+        $('.bloc-filter-agenda-mobile').removeClass("mobile-fixed");
+      }*/
+    }
+  });
+  $('.ct-agenda-public').find('.button-filter-close a').click(function(e) {
+      e.preventDefault();
+      $('.bloc-filter-agenda-mobile').addClass('mobile-fixed');
+      $('.button-agenda-result-mobile').addClass("mobile-fixed");
+  });
+  $('.ct-agenda-public').find('.button-filter-open .close-filters').click(function(e) {
+      e.preventDefault();
+      $('.bloc-filter-agenda-mobile, .ct-all-filters').removeClass('open');
+      $('.button-agenda-result-mobile').removeClass("mobile-fixed");
+  });
+});   
+
+
+}
+/*
+     FILE ARCHIVED ON 08:14:39 Jul 13, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 07:18:05 Jun 08, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 1188.537
+  exclusion.robots: 0.102
+  exclusion.robots.policy: 0.093
+  cdx.remote: 0.067
+  esindex: 0.01
+  LoadShardBlock: 1116.68 (3)
+  PetaboxLoader3.datanode: 311.309 (4)
+  CDXLines.iter: 15.86 (3)
+  load_resource: 48.09
+  PetaboxLoader3.resolve: 24.017
+*/

@@ -1,0 +1,88 @@
+@CHARSET "UTF-8";
+
+.field-collection-container {
+  border-bottom: 1px solid #D3D7D9;
+  margin-bottom: 1em;
+}
+
+.field-collection-container .field-items .field-item {
+  margin-bottom: 10px;
+}
+
+.field-collection-container .field-items .field-items .field-item {
+  margin-bottom: 0;
+}
+
+.field-collection-view {
+  padding: 1em 0 0.3em 0;
+  margin: 0 1em 0 1em;
+  border-bottom: 1px dotted #D3D7D9;
+}
+
+/* If there is no add link, don't show the final border. */
+.field-collection-view-final {
+  border-bottom: none;
+}
+
+.field-collection-view .entity-field-collection-item {
+  float: left;
+}
+
+.field-collection-view ul.field-collection-view-links {
+  float: right;
+  font-size: 0.821em;
+  list-style-type: none;
+  width: auto;
+  margin: 0 1em;
+  padding: 0;
+}
+
+.field-collection-view .field-label {
+  width: 25%;
+}
+
+.field-collection-view .content {
+  margin-top: 0;
+  width: 100%;
+}
+
+.field-collection-view .entity-field-collection-item {
+  width: 100%;
+}
+
+ul.field-collection-view-links li {
+  float: left;
+}
+
+ul.field-collection-view-links li a {
+  margin-right: 1em;
+}
+
+.field-collection-container ul.action-links-field-collection-add {
+  float: right;
+  padding: 0 0.5em 0 0;
+  margin: 0 0 1em 2em;
+  font-size: 0.821em;
+}
+
+/*
+     FILE ARCHIVED ON 20:33:37 Jul 14, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 04:27:56 Jun 08, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 63.63
+  exclusion.robots: 0.151
+  exclusion.robots.policy: 0.138
+  RedisCDXSource: 10.945
+  esindex: 0.009
+  LoadShardBlock: 35.776 (3)
+  PetaboxLoader3.datanode: 136.2 (5)
+  CDXLines.iter: 13.9 (3)
+  load_resource: 217.2 (2)
+  PetaboxLoader3.resolve: 62.769 (2)
+*/

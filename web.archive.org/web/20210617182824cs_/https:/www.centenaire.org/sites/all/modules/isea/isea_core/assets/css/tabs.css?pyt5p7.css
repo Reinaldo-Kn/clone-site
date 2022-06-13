@@ -1,0 +1,40 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* root element for accordion. decorated with rounded borders and gradient background image */
+
+/* accordion header */
+.accordion .title-pane {
+    cursor:pointer;
+}
+
+/* currently active header */
+#accordion .title-pane.current {
+    cursor:default;
+}
+
+/* accordion pane */
+.accordion .pane {
+    display:none;
+}
+/*
+     FILE ARCHIVED ON 03:08:21 Jun 21, 2021 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 07:24:58 Jun 08, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 146.885
+  exclusion.robots: 0.095
+  exclusion.robots.policy: 0.087
+  RedisCDXSource: 21.317
+  esindex: 0.009
+  LoadShardBlock: 102.538 (3)
+  PetaboxLoader3.datanode: 116.39 (4)
+  CDXLines.iter: 17.972 (3)
+  load_resource: 177.31
+  PetaboxLoader3.resolve: 121.132
+*/
